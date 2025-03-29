@@ -25,9 +25,11 @@
     </header>
 
     <section id="home" class="hero">
-        <h2>Benvenuti nelle Ferrovie dello Stato</h2>
+        <img src="https://pohcdn.com/sites/default/files/styles/node__blog_post__bp_banner__blog_post_banner/public/2021-10/railway-train.jpg"
+            alt=" Treno in movimento" class="hero-image">
+        <!-- <h2>Benvenuti nelle Ferrovie dello Stato</h2> -->
         <p>Acquista biglietti, scopri informazioni sui treni e rimani aggiornato sulle tratte ferroviarie.</p>
-        <button class="cta">Scopri di più</button>
+        <!-- <button class="cta">Scopri di più</button> -->
     </section>
 
     <section id="acquista" class="ticket-section">
@@ -55,19 +57,19 @@
             <div class="carousel-track" id="trainCarousel">
                 <!-- Le card verranno generate dinamicamente dal JavaScript -->
             </div>
-            
+
             <button class="carousel-arrow prev" aria-label="Precedente">
                 <i class="fas fa-chevron-left"></i>
             </button>
-            
+
             <button class="carousel-arrow next" aria-label="Successivo">
                 <i class="fas fa-chevron-right"></i>
             </button>
-            
+
             <div class="carousel-indicators" id="carouselIndicators">
                 <!-- Gli indicatori verranno generati dinamicamente dal JavaScript -->
             </div>
-            
+
             <div class="card-counter">
                 <span id="currentCard">1</span>/<span id="totalCards">12</span>
             </div>
@@ -75,9 +77,372 @@
     </section>
 
     <section id="tratte" class="routes">
-        <h2>Tratte per Regione</h2>
-        <p>Consulta le tratte disponibili nella tua regione.</p>
+        <h2>Principali Tratte Ferroviarie</h2>
+        <p>Scopri le principali linee ferroviarie italiane, le stazioni servite e i treni che vi circolano.</p>
+        
+        <div class="routes-container">
+            <!-- Linee Alta Velocità -->
+            <div class="route-category">
+                <h3>Linee Alta Velocità</h3>
+                
+                <div class="route-card">
+                    <h4>Torino - Milano - Bologna - Firenze - Roma - Napoli - Salerno</h4>
+                    <p class="route-description">La dorsale principale dell'Alta Velocità italiana che collega le maggiori città del paese.</p>
+                    <div class="route-details">
+                        <div class="stations">
+                            <h5>Principali stazioni:</h5>
+                            <ul>
+                                <li>Torino Porta Nuova</li>
+                                <li>Milano Centrale</li>
+                                <li>Bologna Centrale AV</li>
+                                <li>Firenze S.M. Novella</li>
+                                <li>Roma Termini/Tiburtina</li>
+                                <li>Napoli Centrale</li>
+                                <li>Salerno</li>
+                            </ul>
+                        </div>
+                        <div class="trains">
+                            <h5>Treni:</h5>
+                            <ul>
+                                <li>Frecciarossa 1000</li>
+                                <li>Frecciarossa ETR 500</li>
+                                <li>Italo AGV</li>
+                                <li>Italo EVO</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="route-card">
+                    <h4>Direttissima Roma - Firenze</h4>
+                    <p class="route-description">Prima linea ad Alta Velocità costruita in Italia, collega Roma a Firenze in circa 1h30.</p>
+                    <div class="route-details">
+                        <div class="stations">
+                            <h5>Principali stazioni:</h5>
+                            <ul>
+                                <li>Roma Termini/Tiburtina</li>
+                                <li>Orte</li>
+                                <li>Arezzo</li>
+                                <li>Firenze S.M. Novella</li>
+                            </ul>
+                        </div>
+                        <div class="trains">
+                            <h5>Treni:</h5>
+                            <ul>
+                                <li>Frecciarossa</li>
+                                <li>Frecciargento</li>
+                                <li>Italo</li>
+                                <li>Intercity</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="route-card">
+                    <h4>Milano - Brescia - Verona - Padova - Venezia</h4>
+                    <p class="route-description">Linea AV/AC che collega Milano con il Nord-Est italiano.</p>
+                    <div class="route-details">
+                        <div class="stations">
+                            <h5>Principali stazioni:</h5>
+                            <ul>
+                                <li>Milano Centrale</li>
+                                <li>Brescia</li>
+                                <li>Verona Porta Nuova</li>
+                                <li>Vicenza</li>
+                                <li>Padova</li>
+                                <li>Venezia S. Lucia/Mestre</li>
+                            </ul>
+                        </div>
+                        <div class="trains">
+                            <h5>Treni:</h5>
+                            <ul>
+                                <li>Frecciarossa</li>
+                                <li>Frecciargento</li>
+                                <li>Italo</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Linee Tradizionali Principali -->
+            <div class="route-category">
+                <h3>Linee Tradizionali Principali</h3>
+                
+                <div class="route-card">
+                    <h4>Linea Adriatica (Bologna - Ancona - Pescara - Bari - Lecce)</h4>
+                    <p class="route-description">Importante collegamento lungo la costa adriatica che unisce il Nord al Sud-Est italiano.</p>
+                    <div class="route-details">
+                        <div class="stations">
+                            <h5>Principali stazioni:</h5>
+                            <ul>
+                                <li>Bologna Centrale</li>
+                                <li>Rimini</li>
+                                <li>Ancona</li>
+                                <li>Pescara</li>
+                                <li>Foggia</li>
+                                <li>Bari Centrale</li>
+                                <li>Brindisi</li>
+                                <li>Lecce</li>
+                            </ul>
+                        </div>
+                        <div class="trains">
+                            <h5>Treni:</h5>
+                            <ul>
+                                <li>Frecciarossa</li>
+                                <li>Frecciargento</li>
+                                <li>Frecciabianca</li>
+                                <li>Intercity</li>
+                                <li>Regionali</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="route-card">
+                    <h4>Tirrenica (Genova - La Spezia - Pisa - Roma)</h4>
+                    <p class="route-description">Linea che costeggia il Mar Tirreno collegando Liguria, Toscana e Lazio.</p>
+                    <div class="route-details">
+                        <div class="stations">
+                            <h5>Principali stazioni:</h5>
+                            <ul>
+                                <li>Genova P. Principe</li>
+                                <li>La Spezia</li>
+                                <li>Pisa Centrale</li>
+                                <li>Livorno</li>
+                                <li>Grosseto</li>
+                                <li>Civitavecchia</li>
+                                <li>Roma Termini</li>
+                            </ul>
+                        </div>
+                        <div class="trains">
+                            <h5>Treni:</h5>
+                            <ul>
+                                <li>Frecciabianca</li>
+                                <li>Intercity</li>
+                                <li>Regionali</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="route-card">
+                    <h4>Torino - Milano - Venezia</h4>
+                    <p class="route-description">Linea storica che attraversa la Pianura Padana collegando le principali città del Nord Italia.</p>
+                    <div class="route-details">
+                        <div class="stations">
+                            <h5>Principali stazioni:</h5>
+                            <ul>
+                                <li>Torino Porta Nuova</li>
+                                <li>Novara</li>
+                                <li>Milano Centrale</li>
+                                <li>Brescia</li>
+                                <li>Verona Porta Nuova</li>
+                                <li>Vicenza</li>
+                                <li>Padova</li>
+                                <li>Venezia S. Lucia</li>
+                            </ul>
+                        </div>
+                        <div class="trains">
+                            <h5>Treni:</h5>
+                            <ul>
+                                <li>Frecciarossa</li>
+                                <li>Frecciabianca</li>
+                                <li>Regionali Veloci</li>
+                                <li>Regionali</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Linee Regionali Importanti -->
+            <div class="route-category">
+                <h3>Linee Regionali Importanti</h3>
+                
+                <div class="route-card">
+                    <h4>Roma - Napoli (via Formia)</h4>
+                    <p class="route-description">Linea storica che collega Roma a Napoli passando per il litorale laziale e campano.</p>
+                    <div class="route-details">
+                        <div class="stations">
+                            <h5>Principali stazioni:</h5>
+                            <ul>
+                                <li>Roma Termini</li>
+                                <li>Latina</li>
+                                <li>Formia</li>
+                                <li>Aversa</li>
+                                <li>Napoli Centrale</li>
+                            </ul>
+                        </div>
+                        <div class="trains">
+                            <h5>Treni:</h5>
+                            <ul>
+                                <li>Intercity</li>
+                                <li>Regionali Veloci</li>
+                                <li>Regionali</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="route-card">
+                    <h4>Bari - Taranto</h4>
+                    <p class="route-description">Importante collegamento tra i due principali centri della Puglia.</p>
+                    <div class="route-details">
+                        <div class="stations">
+                            <h5>Principali stazioni:</h5>
+                            <ul>
+                                <li>Bari Centrale</li>
+                                <li>Gioia del Colle</li>
+                                <li>Taranto</li>
+                            </ul>
+                        </div>
+                        <div class="trains">
+                            <h5>Treni:</h5>
+                            <ul>
+                                <li>Frecciargento</li>
+                                <li>Intercity</li>
+                                <li>Regionali</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="route-card">
+                    <h4>Torino - Genova</h4>
+                    <p class="route-description">Linea che collega il Piemonte alla Liguria attraversando l'Appennino.</p>
+                    <div class="route-details">
+                        <div class="stations">
+                            <h5>Principali stazioni:</h5>
+                            <ul>
+                                <li>Torino Porta Nuova</li>
+                                <li>Asti</li>
+                                <li>Alessandria</li>
+                                <li>Novi Ligure</li>
+                                <li>Genova P. Principe</li>
+                            </ul>
+                        </div>
+                        <div class="trains">
+                            <h5>Treni:</h5>
+                            <ul>
+                                <li>Intercity</li>
+                                <li>Regionali Veloci</li>
+                                <li>Regionali</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="route-card">
+                    <h4>Milano - Domodossola (Sempione)</h4>
+                    <p class="route-description">Linea internazionale che collega l'Italia alla Svizzera attraverso il Passo del Sempione.</p>
+                    <div class="route-details">
+                        <div class="stations">
+                            <h5>Principali stazioni:</h5>
+                            <ul>
+                                <li>Milano Centrale</li>
+                                <li>Gallarate</li>
+                                <li>Arona</li>
+                                <li>Stresa</li>
+                                <li>Domodossola</li>
+                            </ul>
+                        </div>
+                        <div class="trains">
+                            <h5>Treni:</h5>
+                            <ul>
+                                <li>Eurocity</li>
+                                <li>Regionali</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Linee Turistiche -->
+            <div class="route-category">
+                <h3>Linee Turistiche e Storiche</h3>
+                
+                <div class="route-card">
+                    <h4>Circumvesuviana (Napoli - Sorrento)</h4>
+                    <p class="route-description">Linea che collega Napoli con Sorrento passando per Pompei ed Ercolano.</p>
+                    <div class="route-details">
+                        <div class="stations">
+                            <h5>Principali stazioni:</h5>
+                            <ul>
+                                <li>Napoli Porta Nolana</li>
+                                <li>Ercolano Scavi</li>
+                                <li>Pompei Scavi</li>
+                                <li>Castellammare di Stabia</li>
+                                <li>Sorrento</li>
+                            </ul>
+                        </div>
+                        <div class="trains">
+                            <h5>Treni:</h5>
+                            <ul>
+                                <li>Treni EAV</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="route-card">
+                    <h4>Ferrovia del Bernina (Tirano - St. Moritz)</h4>
+                    <p class="route-description">Patrimonio UNESCO, collega l'Italia alla Svizzera attraverso paesaggi alpini mozzafiato.</p>
+                    <div class="route-details">
+                        <div class="stations">
+                            <h5>Principali stazioni:</h5>
+                            <ul>
+                                <li>Tirano</li>
+                                <li>Poschiavo</li>
+                                <li>Ospizio Bernina</li>
+                                <li>St. Moritz</li>
+                            </ul>
+                        </div>
+                        <div class="trains">
+                            <h5>Treni:</h5>
+                            <ul>
+                                <li>Bernina Express</li>
+                                <li>Treni regionali RhB</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="route-card">
+                    <h4>Transiberiana d'Italia (Sulmona - Isernia)</h4>
+                    <p class="route-description">Ferrovia storica che attraversa gli Appennini abruzzesi e molisani a oltre 1200m di altitudine.</p>
+                    <div class="route-details">
+                        <div class="stations">
+                            <h5>Principali stazioni:</h5>
+                            <ul>
+                                <li>Sulmona</li>
+                                <li>Campo di Giove</li>
+                                <li>Roccaraso</li>
+                                <li>Castel di Sangro</li>
+                                <li>Isernia</li>
+                            </ul>
+                        </div>
+                        <div class="trains">
+                            <h5>Treni:</h5>
+                            <ul>
+                                <li>Treni storici</li>
+                                <li>Treni turistici</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="route-search">
+            <h3>Cerca una tratta specifica</h3>
+            <div class="search-form">
+                <input type="text" id="route-search" placeholder="Inserisci città di partenza o arrivo">
+                <button type="button" class="search-btn">Cerca</button>
+            </div>
+        </div>
     </section>
+    
 
     <section id="news" class="news-section">
         <h2>Aggiornamenti</h2>
@@ -120,13 +485,13 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Dati dei treni
             const trainCards = [
                 {
-                    image: 'frecciarossa1000.jpg',
+                    image: 'https://www.thetrainline.com/cmsmedia/cms/9533/trenitalia_hero_2x.jpg',
                     title: 'Frecciarossa 1000',
-                    description: 'Il top dell\'Alta Velocità italiana fino a 360 km/h',
+                    description: 'Ammiraglia dell\'Alta Velocità italiana, raggiunge i 360 km/h con interni di design e 4 livelli di servizio. Connessione Wi-Fi gratuita e sistema di intrattenimento a bordo.',
                     details: {
                         speed: '360 km/h',
                         comfort: 'Executive',
@@ -134,9 +499,9 @@
                     }
                 },
                 {
-                    image: 'frecciargento.jpg',
+                    image: 'https://cdn3.trainspictures.com/pictures/45/06/1920.jpg',
                     title: 'Frecciargento',
-                    description: 'Velocità e comfort sulle principali tratte',
+                    description: 'Treno ad assetto variabile che si adatta perfettamente sia alle linee AV che a quelle tradizionali. Ideale per collegamenti verso città non servite da linee dedicate all\'Alta Velocità.',
                     details: {
                         speed: '250 km/h',
                         comfort: 'Business',
@@ -144,9 +509,9 @@
                     }
                 },
                 {
-                    image: 'frecciabianca.jpg',
+                    image: 'https://www.ilportaledeitreni.it/wp-content/uploads/2017/07/SAM_2915-1.jpg',
                     title: 'Frecciabianca',
-                    description: 'Servizio veloce sulle linee tradizionali',
+                    description: 'Collega le principali città italiane su linee convenzionali con elevati standard di comfort. Perfetto equilibrio tra velocità e capillarità del servizio.',
                     details: {
                         speed: '200 km/h',
                         comfort: 'Standard Plus',
@@ -154,9 +519,9 @@
                     }
                 },
                 {
-                    image: 'italo.jpg',
+                    image: 'https://travelwonderer.it/wp-content/uploads/2020/10/Italia-Lazio-Roma-treno-Termini-Italo-1.jpg',
                     title: 'Italo AGV',
-                    description: 'Alta Velocità con comfort e design italiano',
+                    description: 'Primo treno ad Alta Velocità completamente interoperabile in Europa, unisce tecnologia francese e design italiano. Silenzioso, ecologico e con ambienti eleganti.',
                     details: {
                         speed: '300 km/h',
                         comfort: 'Club',
@@ -164,9 +529,9 @@
                     }
                 },
                 {
-                    image: 'italoevo.jpg',
+                    image: 'https://live.staticflickr.com/4906/45425213395_562c91e69a_b.jpg',
                     title: 'Italo EVO',
-                    description: 'Nuovo modello ad Alta Velocità con tecnologia avanzata',
+                    description: 'Evoluzione della flotta Italo con maggiore efficienza energetica e ridotto impatto ambientale. Dotato di sistema di illuminazione LED e materiali riciclabili al 98%.',
                     details: {
                         speed: '300 km/h',
                         comfort: 'Prima',
@@ -174,9 +539,9 @@
                     }
                 },
                 {
-                    image: 'intercity.jpg',
+                    image: 'https://www.rainews.it/dl/img/2022/05/1600x1200_1653212302328.Stazione_di_Romagnano_Vietri_Salvitelle___treno_Intercity___locomotiva_E.401.036.jpg',
                     title: 'Intercity',
-                    description: 'Collegamenti tra le principali città italiane',
+                    description: 'Servizio di media-lunga percorrenza che garantisce collegamenti tra centri urbani di medie e grandi dimensioni. Carrozze rinnovate con prese elettriche e spazi per biciclette.',
                     details: {
                         speed: '200 km/h',
                         comfort: 'Standard',
@@ -184,9 +549,9 @@
                     }
                 },
                 {
-                    image: 'intercitynotte.jpg',
+                    image: 'https://www.ilportaledeitreni.it/wp-content/uploads/2025/01/IC-NOTTE-61-8329-90-833-8-I-TI.jpg',
                     title: 'Intercity Notte',
-                    description: 'Viaggi notturni confortevoli attraverso l\'Italia',
+                    description: 'Viaggia mentre dormi attraversando l\'Italia da nord a sud. Scompartimenti con cuccette e vagoni letto per un riposo confortevole durante il viaggio notturno.',
                     details: {
                         speed: '160 km/h',
                         comfort: 'Cuccette',
@@ -194,9 +559,9 @@
                     }
                 },
                 {
-                    image: 'regionaleveloce.jpg',
+                    image: 'https://www.primocanale.it/materialiarchivio/immagininews/20151013192404-treni_vivalto.jpg',
                     title: 'Regionale Veloce',
-                    description: 'Collegamenti veloci tra centri regionali',
+                    description: 'Servizio potenziato con fermate ridotte per collegamenti rapidi tra centri regionali importanti. Ideale per pendolari che necessitano di spostamenti veloci.',
                     details: {
                         speed: '160 km/h',
                         comfort: 'Standard',
@@ -204,19 +569,9 @@
                     }
                 },
                 {
-                    image: 'regionale.jpg',
-                    title: 'Treno Regionale',
-                    description: 'Mobilità quotidiana per pendolari e viaggiatori',
-                    details: {
-                        speed: '140 km/h',
-                        comfort: 'Standard',
-                        route: 'Varie'
-                    }
-                },
-                {
-                    image: 'regionalerock.jpg',
+                    image: 'https://www.cittadellaspezia.com/photogallery_new/images/2023/06/treno-in-liguria-432848.jpg',
                     title: 'Rock',
-                    description: 'Nuovo treno regionale a doppio piano ad alta capacità',
+                    description: 'Treno regionale di ultima generazione a doppio piano con capacità fino a 1.400 passeggeri. Dotato di videosorveglianza, Wi-Fi e aree per biciclette e bagagli.',
                     details: {
                         speed: '160 km/h',
                         comfort: 'Avanzato',
@@ -224,9 +579,9 @@
                     }
                 },
                 {
-                    image: 'regionalepop.jpg',
+                    image: 'https://www.ferrovie.it/portale/images/articoli/10300101.jpg',
                     title: 'Pop',
-                    description: 'Nuovo treno regionale mono piano ecosostenibile',
+                    description: 'Convoglio mono piano ad alta sostenibilità ambientale, costruito con materiali riciclabili e consumi ridotti del 30%. Accessibilità totale per persone a mobilità ridotta.',
                     details: {
                         speed: '160 km/h',
                         comfort: 'Moderno',
@@ -234,9 +589,19 @@
                     }
                 },
                 {
-                    image: 'trenostorico.jpg',
+                    image: 'https://www.triesteallnews.it/wp-content/images/2025/02/trieste@news-Arlecchino.jpg',
                     title: 'Treni Storici',
-                    description: 'Viaggi d\'epoca su rotaie per riscoprire l\'Italia',
+                    description: 'Autentici gioielli ferroviari restaurati che raccontano la storia delle ferrovie italiane. Viaggi emozionanti su convogli d\'epoca attraverso paesaggi mozzafiato.',
+                    details: {
+                        speed: '100 km/h',
+                        comfort: 'Vintage',
+                        route: 'Turistiche'
+                    }
+                },
+                {
+                    image: 'https://www.stagniweb.it/altro2/large7/tti_4835.jpg',
+                    title: 'Treni Turistici',
+                    description: 'Itinerari dedicati alla scoperta di borghi, parchi naturali e siti UNESCO. Esperienza di viaggio lenta e immersiva con carrozze panoramiche e guide a bordo.',
                     details: {
                         speed: '100 km/h',
                         comfort: 'Vintage',
@@ -245,6 +610,7 @@
                 }
             ];
 
+
             // Configurazione del carousel
             const carousel = document.getElementById('trainCarousel');
             const indicators = document.getElementById('carouselIndicators');
@@ -252,13 +618,13 @@
             const nextBtn = document.querySelector('.carousel-arrow.next');
             const currentCardEl = document.getElementById('currentCard');
             const totalCardsEl = document.getElementById('totalCards');
-            
+
             let currentIndex = 0;
             const totalCards = trainCards.length;
-            
+
             // Aggiorna il contatore totale
             totalCardsEl.textContent = totalCards;
-            
+
             // Crea le card e gli indicatori
             function setupCarousel() {
                 // Crea le card
@@ -266,33 +632,33 @@
                     const cardElement = createCardElement(card, index);
                     carousel.appendChild(cardElement);
                 });
-                
+
                 // Crea gli indicatori
                 trainCards.forEach((_, index) => {
                     const indicator = document.createElement('div');
                     indicator.classList.add('carousel-indicator');
                     if (index === 0) indicator.classList.add('active');
-                    
+
                     indicator.addEventListener('click', () => {
                         goToCard(index);
                     });
-                    
+
                     indicators.appendChild(indicator);
                 });
-                
+
                 // Imposta la larghezza del carousel track
                 carousel.style.width = `${totalCards * 100}%`;
-                
+
                 // Mostra la prima card
                 updateCarousel();
             }
-            
+
             // Crea un elemento card
             function createCardElement(cardData, index) {
                 const card = document.createElement('div');
                 card.classList.add('train-card');
                 if (index === 0) card.classList.add('active');
-                
+
                 card.innerHTML = `
                     <img src="${cardData.image}" alt="${cardData.title}">
                     <div class="train-card-content">
@@ -314,20 +680,20 @@
                         </div>
                     </div>
                 `;
-                
+
                 // Aggiungi evento click per aprire il modal
                 card.addEventListener('click', () => {
                     openModal(cardData);
                 });
-                
+
                 return card;
             }
-            
+
             // Aggiorna la visualizzazione del carousel
             function updateCarousel() {
                 // Aggiorna la posizione del carousel
                 carousel.style.transform = `translateX(-${currentIndex * (100 / totalCards)}%)`;
-                
+
                 // Aggiorna gli indicatori
                 document.querySelectorAll('.carousel-indicator').forEach((indicator, index) => {
                     if (index === currentIndex) {
@@ -336,10 +702,10 @@
                         indicator.classList.remove('active');
                     }
                 });
-                
+
                 // Aggiorna il contatore
                 currentCardEl.textContent = currentIndex + 1;
-                
+
                 // Aggiorna la classe active per l'animazione
                 document.querySelectorAll('.train-card').forEach((card, index) => {
                     if (index === currentIndex) {
@@ -349,30 +715,30 @@
                     }
                 });
             }
-            
+
             // Vai alla card precedente
             function prevCard() {
                 currentIndex = (currentIndex - 1 + totalCards) % totalCards;
                 updateCarousel();
             }
-            
+
             // Vai alla card successiva
             function nextCard() {
                 currentIndex = (currentIndex + 1) % totalCards;
                 updateCarousel();
             }
-            
+
             // Vai a una card specifica
             function goToCard(index) {
                 currentIndex = index;
                 updateCarousel();
             }
-            
+
             // Apri il modal con i dettagli della card
             function openModal(cardData) {
                 const modal = document.createElement('div');
                 modal.classList.add('modal');
-                
+
                 modal.innerHTML = `
                     <div class="modal-content">
                         <span class="close-button">&times;</span>
@@ -383,20 +749,17 @@
                             <p><strong>Velocità massima:</strong> ${cardData.details.speed}</p>
                             <p><strong>Livello di comfort:</strong> ${cardData.details.comfort}</p>
                             <p><strong>Tratte principali:</strong> ${cardData.details.route}</p>
-                            <p>Questo treno rappresenta l'eccellenza del trasporto ferroviario italiano, 
-                            offrendo ai passeggeri un'esperienza di viaggio confortevole e veloce. 
-                            Dotato delle più moderne tecnologie, garantisce sicurezza e puntualità su tutte le tratte servite.</p>
                         </div>
                     </div>
                 `;
-                
+
                 document.body.appendChild(modal);
-                
+
                 // Mostra il modal con animazione
                 setTimeout(() => {
                     modal.classList.add('show');
                 }, 10);
-                
+
                 // Gestisci la chiusura del modal
                 const closeBtn = modal.querySelector('.close-button');
                 closeBtn.addEventListener('click', () => {
@@ -405,7 +768,7 @@
                         document.body.removeChild(modal);
                     }, 300);
                 });
-                
+
                 // Chiudi il modal cliccando fuori dal contenuto
                 modal.addEventListener('click', (e) => {
                     if (e.target === modal) {
@@ -416,11 +779,11 @@
                     }
                 });
             }
-            
+
             // Event listeners
             prevBtn.addEventListener('click', prevCard);
             nextBtn.addEventListener('click', nextCard);
-            
+
             // Gestisci la navigazione con tastiera
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'ArrowLeft') {
@@ -429,12 +792,12 @@
                     nextCard();
                 }
             });
-            
+
             // Inizializza il carousel
             setupCarousel();
-            
+
             // Header scroll effect
-            window.addEventListener('scroll', function() {
+            window.addEventListener('scroll', function () {
                 const header = document.querySelector('header');
                 if (window.scrollY > 100) {
                     header.classList.add('header-scrolled');
@@ -445,4 +808,5 @@
         });
     </script>
 </body>
+
 </html>
