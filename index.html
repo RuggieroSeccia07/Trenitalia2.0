@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferrovie Italiane</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- <style>
+        /* Carousel Styles */
+.carousel-container {
+    width: 100%;
+    max-width: 1000px; /* Aumentato per card più grandi */
+    margin: 40px auto;
+    position: relative;
+    overflow: hidden;
+    padding: 20px 0;
+    background: var(--bg-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+    position: relative;
+}
+
+.train-card {
+    flex: 0 0 100%; /* Ogni card occupa il 100% della larghezza */
+    padding: 30px;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+    transform: scale(0.9);
+    transition: all 0.5s ease;
+}
+
+.train-card.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.train-card img {
+    width: 100%;
+    height: 400px; /* Aumentata l'altezza dell'immagine */
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.train-card-content {
+    padding: 25px 0;
+    text-align: center;
+}
+
+.train-card h3 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.train-card p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.train-details {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 1px solid #eee;
+}
+
+.train-detail-item {
+    text-align: center;
+}
+
+.detail-label {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 5px;
+    display: block;
+}
+
+.detail-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* Navigation Arrows */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-arrow:hover {
+    background: var(--accent-color);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-arrow.prev {
+    left: 20px;
+}
+
+.carousel-arrow.next {
+    right: 20px;
+}
+
+/* Indicators */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.carousel-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicator.active {
+    background: var(--accent-color);
+    transform: scale(1.3);
+}
+
+/* Counter */
+.card-counter {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    display: block;
+    opacity: 1;
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    width: 90%;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    transform: translateY(-30px);
+    transition: transform 0.3s ease;
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+}
+
+.close-button {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+.close-button:hover {
+    color: var(--primary-color);
+}
+
+.modal-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .carousel-container {
+        max-width: 90%;
+    }
+
+    .train-card {
+        padding: 15px;
+    }
+
+    .train-card img {
+        height: 300px;
+    }
+
+    .carousel-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .train-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .train-card p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .train-card img {
+        height: 200px;
+    }
+
+    .carousel-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    .train-details {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+    </style> -->
+</head>
+
+<body>
+    <header>
+        <h1>Ferrovie dello Stato Italiane</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#acquista">Acquista Biglietti</a></li>
+                <li><a href="#treni">Treni in Utilizzo</a></li>
+                <li><a href="#tratte">Tratte Regionali</a></li>
+                <li><a href="#news">Aggiornamenti</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h2>Benvenuti nelle Ferrovie dello Stato</h2>
+        <p>Acquista biglietti, scopri informazioni sui treni e rimani aggiornato sulle tratte ferroviarie.</p>
+        <button class="cta">Scopri di più</button>
+    </section>
+
+    <section id="acquista" class="ticket-section">
+        <h2>Acquista il tuo biglietto</h2>
+        <form>
+            <div class="form-group">
+                <label for="departure">Partenza</label>
+                <input type="text" id="departure" placeholder="Stazione di partenza">
+            </div>
+            <div class="form-group">
+                <label for="destination">Destinazione</label>
+                <input type="text" id="destination" placeholder="Stazione di arrivo">
+            </div>
+            <div class="form-group">
+                <label for="date">Data</label>
+                <input type="date" id="date">
+            </div>
+            <button type="submit" class="search-btn">Cerca</button>
+        </form>
+    </section>
+
+    <section id="treni" class="trains">
+        <h2>Treni in Utilizzo</h2>
+        <div class="carousel-container">
+            <div class="carousel-track" id="trainCarousel">
+                <!-- Le card verranno generate dinamicamente dal JavaScript -->
+            </div>
+            
+            <button class="carousel-arrow prev" aria-label="Precedente">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <button class="carousel-arrow next" aria-label="Successivo">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <div class="carousel-indicators" id="carouselIndicators">
+                <!-- Gli indicatori verranno generati dinamicamente dal JavaScript -->
+            </div>
+            
+            <div class="card-counter">
+                <span id="currentCard">1</span>/<span id="totalCards">12</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="tratte" class="routes">
+        <h2>Tratte per Regione</h2>
+        <p>Consulta le tratte disponibili nella tua regione.</p>
+    </section>
+
+    <section id="news" class="news-section">
+        <h2>Aggiornamenti</h2>
+        <p>Ultime novità su orari, treni e tecnologie ferroviarie.</p>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Informazioni</h3>
+                <ul>
+                    <li><a href="#">Chi siamo</a></li>
+                    <li><a href="#">Lavora con noi</a></li>
+                    <li><a href="#">Sostenibilità</a></li>
+                    <li><a href="#">Contatti</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Servizi</h3>
+                <ul>
+                    <li><a href="#">Assistenza</a></li>
+                    <li><a href="#">Rimborsi</a></li>
+                    <li><a href="#">Abbonamenti</a></li>
+                    <li><a href="#">Servizi in stazione</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Seguici</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Ferrovie dello Stato Italiane. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Dati dei treni
+            const trainCards = [
+                {
+                    image: 'frecciarossa1000.jpg',
+                    title: 'Frecciarossa 1000',
+                    description: 'Il top dell\'Alta Velocità italiana fino a 360 km/h',
+                    details: {
+                        speed: '360 km/h',
+                        comfort: 'Executive',
+                        route: 'TO-MI-RM-NA'
+                    }
+                },
+                {
+                    image: 'frecciargento.jpg',
+                    title: 'Frecciargento',
+                    description: 'Velocità e comfort sulle principali tratte',
+                    details: {
+                        speed: '250 km/h',
+                        comfort: 'Business',
+                        route: 'RM-VE'
+                    }
+                },
+                {
+                    image: 'frecciabianca.jpg',
+                    title: 'Frecciabianca',
+                    description: 'Servizio veloce sulle linee tradizionali',
+                    details: {
+                        speed: '200 km/h',
+                        comfort: 'Standard Plus',
+                        route: 'MI-GE-RM'
+                    }
+                },
+                {
+                    image: 'italo.jpg',
+                    title: 'Italo AGV',
+                    description: 'Alta Velocità con comfort e design italiano',
+                    details: {
+                        speed: '300 km/h',
+                        comfort: 'Club',
+                        route: 'MI-RM-NA'
+                    }
+                },
+                {
+                    image: 'italoevo.jpg',
+                    title: 'Italo EVO',
+                    description: 'Nuovo modello ad Alta Velocità con tecnologia avanzata',
+                    details: {
+                        speed: '300 km/h',
+                        comfort: 'Prima',
+                        route: 'TO-MI-VE'
+                    }
+                },
+                {
+                    image: 'intercity.jpg',
+                    title: 'Intercity',
+                    description: 'Collegamenti tra le principali città italiane',
+                    details: {
+                        speed: '200 km/h',
+                        comfort: 'Standard',
+                        route: 'BO-BA'
+                    }
+                },
+                {
+                    image: 'intercitynotte.jpg',
+                    title: 'Intercity Notte',
+                    description: 'Viaggi notturni confortevoli attraverso l\'Italia',
+                    details: {
+                        speed: '160 km/h',
+                        comfort: 'Cuccette',
+                        route: 'MI-PA'
+                    }
+                },
+                {
+                    image: 'regionaleveloce.jpg',
+                    title: 'Regionale Veloce',
+                    description: 'Collegamenti veloci tra centri regionali',
+                    details: {
+                        speed: '160 km/h',
+                        comfort: 'Standard',
+                        route: 'FI-PI'
+                    }
+                },
+                {
+                    image: 'regionale.jpg',
+                    title: 'Treno Regionale',
+                    description: 'Mobilità quotidiana per pendolari e viaggiatori',
+                    details: {
+                        speed: '140 km/h',
+                        comfort: 'Standard',
+                        route: 'Varie'
+                    }
+                },
+                {
+                    image: 'regionalerock.jpg',
+                    title: 'Rock',
+                    description: 'Nuovo treno regionale a doppio piano ad alta capacità',
+                    details: {
+                        speed: '160 km/h',
+                        comfort: 'Avanzato',
+                        route: 'Regionali'
+                    }
+                },
+                {
+                    image: 'regionalepop.jpg',
+                    title: 'Pop',
+                    description: 'Nuovo treno regionale mono piano ecosostenibile',
+                    details: {
+                        speed: '160 km/h',
+                        comfort: 'Moderno',
+                        route: 'Regionali'
+                    }
+                },
+                {
+                    image: 'trenostorico.jpg',
+                    title: 'Treni Storici',
+                    description: 'Viaggi d\'epoca su rotaie per riscoprire l\'Italia',
+                    details: {
+                        speed: '100 km/h',
+                        comfort: 'Vintage',
+                        route: 'Turistiche'
+                    }
+                }
+            ];
+
+            // Configurazione del carousel
+            const carousel = document.getElementById('trainCarousel');
+            const indicators = document.getElementById('carouselIndicators');
+            const prevBtn = document.querySelector('.carousel-arrow.prev');
+            const nextBtn = document.querySelector('.carousel-arrow.next');
+            const currentCardEl = document.getElementById('currentCard');
+            const totalCardsEl = document.getElementById('totalCards');
+            
+            let currentIndex = 0;
+            const totalCards = trainCards.length;
+            
+            // Aggiorna il contatore totale
+            totalCardsEl.textContent = totalCards;
+            
+            // Crea le card e gli indicatori
+            function setupCarousel() {
+                // Crea le card
+                trainCards.forEach((card, index) => {
+                    const cardElement = createCardElement(card, index);
+                    carousel.appendChild(cardElement);
+                });
+                
+                // Crea gli indicatori
+                trainCards.forEach((_, index) => {
+                    const indicator = document.createElement('div');
+                    indicator.classList.add('carousel-indicator');
+                    if (index === 0) indicator.classList.add('active');
+                    
+                    indicator.addEventListener('click', () => {
+                        goToCard(index);
+                    });
+                    
+                    indicators.appendChild(indicator);
+                });
+                
+                // Imposta la larghezza del carousel track
+                carousel.style.width = `${totalCards * 100}%`;
+                
+                // Mostra la prima card
+                updateCarousel();
+            }
+            
+            // Crea un elemento card
+            function createCardElement(cardData, index) {
+                const card = document.createElement('div');
+                card.classList.add('train-card');
+                if (index === 0) card.classList.add('active');
+                
+                card.innerHTML = `
+                    <img src="${cardData.image}" alt="${cardData.title}">
+                    <div class="train-card-content">
+                        <h3>${cardData.title}</h3>
+                        <p>${cardData.description}</p>
+                        <div class="train-details">
+                            <div class="train-detail-item">
+                                <span class="detail-label">Velocità</span>
+                                <span class="detail-value">${cardData.details.speed}</span>
+                            </div>
+                            <div class="train-detail-item">
+                                <span class="detail-label">Comfort</span>
+                                <span class="detail-value">${cardData.details.comfort}</span>
+                            </div>
+                            <div class="train-detail-item">
+                                <span class="detail-label">Tratta</span>
+                                <span class="detail-value">${cardData.details.route}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                // Aggiungi evento click per aprire il modal
+                card.addEventListener('click', () => {
+                    openModal(cardData);
+                });
+                
+                return card;
+            }
+            
+            // Aggiorna la visualizzazione del carousel
+            function updateCarousel() {
+                // Aggiorna la posizione del carousel
+                carousel.style.transform = `translateX(-${currentIndex * (100 / totalCards)}%)`;
+                
+                // Aggiorna gli indicatori
+                document.querySelectorAll('.carousel-indicator').forEach((indicator, index) => {
+                    if (index === currentIndex) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+                
+                // Aggiorna il contatore
+                currentCardEl.textContent = currentIndex + 1;
+                
+                // Aggiorna la classe active per l'animazione
+                document.querySelectorAll('.train-card').forEach((card, index) => {
+                    if (index === currentIndex) {
+                        card.classList.add('active');
+                    } else {
+                        card.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Vai alla card precedente
+            function prevCard() {
+                currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+                updateCarousel();
+            }
+            
+            // Vai alla card successiva
+            function nextCard() {
+                currentIndex = (currentIndex + 1) % totalCards;
+                updateCarousel();
+            }
+            
+            // Vai a una card specifica
+            function goToCard(index) {
+                currentIndex = index;
+                updateCarousel();
+            }
+            
+            // Apri il modal con i dettagli della card
+            function openModal(cardData) {
+                const modal = document.createElement('div');
+                modal.classList.add('modal');
+                
+                modal.innerHTML = `
+                    <div class="modal-content">
+                        <span class="close-button">&times;</span>
+                        <img src="${cardData.image}" alt="${cardData.title}" class="modal-image">
+                        <div class="modal-details">
+                            <h3>${cardData.title}</h3>
+                            <p>${cardData.description}</p>
+                            <p><strong>Velocità massima:</strong> ${cardData.details.speed}</p>
+                            <p><strong>Livello di comfort:</strong> ${cardData.details.comfort}</p>
+                            <p><strong>Tratte principali:</strong> ${cardData.details.route}</p>
+                            <p>Questo treno rappresenta l'eccellenza del trasporto ferroviario italiano, 
+                            offrendo ai passeggeri un'esperienza di viaggio confortevole e veloce. 
+                            Dotato delle più moderne tecnologie, garantisce sicurezza e puntualità su tutte le tratte servite.</p>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+                
+                // Mostra il modal con animazione
+                setTimeout(() => {
+                    modal.classList.add('show');
+                }, 10);
+                
+                // Gestisci la chiusura del modal
+                const closeBtn = modal.querySelector('.close-button');
+                closeBtn.addEventListener('click', () => {
+                    modal.classList.remove('show');
+                    setTimeout(() => {
+                        document.body.removeChild(modal);
+                    }, 300);
+                });
+                
+                // Chiudi il modal cliccando fuori dal contenuto
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.classList.remove('show');
+                        setTimeout(() => {
+                            document.body.removeChild(modal);
+                        }, 300);
+                    }
+                });
+            }
+            
+            // Event listeners
+            prevBtn.addEventListener('click', prevCard);
+            nextBtn.addEventListener('click', nextCard);
+            
+            // Gestisci la navigazione con tastiera
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    prevCard();
+                } else if (e.key === 'ArrowRight') {
+                    nextCard();
+                }
+            });
+            
+            // Inizializza il carousel
+            setupCarousel();
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

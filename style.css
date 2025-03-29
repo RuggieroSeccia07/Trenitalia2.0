@@ -1,0 +1,752 @@
+/* Base styling with improved defaults */
+:root {
+    --primary-color: #003366;
+    --primary-dark: #002244;
+    --accent-color: #ffcc00;
+    --accent-hover: #e6b800;
+    --text-color: #333;
+    --text-light: #666;
+    --bg-light: #f4f4f4;
+    --bg-white: #fff;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --border-radius: 10px;
+    --transition-speed: 0.3s;
+}
+  
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+html {
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+    font-size: 16px;
+}
+  
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+  
+/* Improved accessibility */
+:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+  
+/* Common styles with more utility classes */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+  
+.box-shadow {
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-speed);
+}
+.box-shadow:hover { box-shadow: var(--shadow-md); }
+  
+.rounded { border-radius: var(--border-radius); }
+  
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+  
+/* Enhanced header and navigation */
+header, footer {
+    background: var(--primary-color);
+    color: white;
+    padding: 20px;
+}
+  
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, padding 0.3s;
+}
+  
+/* Shrink header on scroll */
+.header-scrolled {
+    padding: 10px 20px;
+    background-color: rgba(0, 51, 102, 0.95);
+    backdrop-filter: blur(5px);
+}
+  
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+  
+nav ul li {
+    margin: 0 15px;
+}
+  
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    padding: 5px 0;
+    transition: color var(--transition-speed);
+}
+  
+/* Animated underline effect for nav links */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width var(--transition-speed);
+}
+  
+nav ul li a:hover {
+    color: var(--accent-color);
+}
+  
+nav ul li a:hover::after {
+    width: 100%;
+}
+  
+/* Improved hero section */
+.hero {
+    position: relative;
+    background: url('train-bg.jpg') no-repeat center center/cover;
+    height: 80vh; /* Taller hero section */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    flex-direction: column;
+    padding: 20px;
+    margin-top: 80px;
+}
+  
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7));
+    z-index: 0;
+}
+  
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    animation: fadeIn 1s ease-out;
+}
+  
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+  
+.hero h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem); /* Responsive font size */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    letter-spacing: 1px;
+}
+  
+.hero p {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+  
+/* Enhanced buttons */
+.btn {
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: all var(--transition-speed);
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    border: none;
+    padding: 12px 25px;
+}
+  
+.cta {
+    background: var(--accent-color);
+    color: var(--primary-dark);
+    font-size: 18px;
+    box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
+    letter-spacing: 0.5px;
+}
+  
+.cta:hover {
+    background: var(--accent-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 204, 0, 0.4);
+}
+  
+.cta:active {
+    transform: translateY(1px);
+}
+  
+.search-btn {
+    background: var(--primary-color);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+}
+  
+.search-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 51, 102, 0.3);
+}
+  
+.search-btn:active {
+    transform: translateY(1px);
+}
+  
+/* Improved sections */
+section {
+    padding: 80px 20px;
+    margin: 0 auto;
+}
+  
+section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+  
+/* Decorative underline for section titles */
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--accent-color);
+}
+  
+.ticket-section, .routes {
+    background: var(--bg-white);
+    margin-top: 20px;
+    padding: 60px 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+}
+  
+.trains, .news-section {
+    background: #f9f9f9;
+    padding: 60px 40px;
+    border-radius: var(--border-radius);
+}
+  
+/* Improved forms */
+.ticket-section form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+  
+.form-group {
+    flex: 1 1 200px;
+}
+  
+.ticket-section form input, 
+.ticket-section form select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+  
+.ticket-section form input:focus,
+.ticket-section form select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
+}
+  
+.ticket-section form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+/* Carousel Styles - Updated */
+.carousel-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 60px auto;
+    position: relative;
+    background: var(--bg-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    padding: 30px 0;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 1200%; /* Imposta una larghezza adeguata per contenere tutte le card (12 card * 100%) */
+}
+
+/* Train Cards - Single View */
+.train-card {
+    flex: 0 0 8.333%; /* 100% / 12 cards = 8.333% per card */
+    padding: 30px;
+    margin: 0;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-speed);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 500px;
+    opacity: 0.5; /* Leggermente visibile ma non completamente */
+}
+
+.train-card.active {
+    opacity: 1;
+    transform: scale(1.02);
+    box-shadow: var(--shadow-md);
+    z-index: 1;
+}
+
+.train-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    pointer-events: none;
+}
+
+.train-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    opacity: 1;
+}
+
+.train-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: calc(var(--border-radius) - 2px);
+    transition: transform var(--transition-speed);
+}
+
+.train-card:hover img {
+    transform: scale(1.03);
+}
+
+.train-card-content {
+    width: 100%;
+    padding: 25px 0 10px;
+    text-align: center;
+}
+
+.train-card h3 {
+    font-size: 1.8rem;
+    margin: 15px 0;
+    color: var(--primary-color);
+}
+
+.train-card p {
+    margin-top: 15px;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Train Details */
+.train-details {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.train-detail-item {
+    text-align: center;
+    flex: 1;
+}
+
+.train-detail-item span {
+    display: block;
+}
+
+.detail-label {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 5px;
+}
+
+.detail-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* Navigation Arrows */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    font-size: 1.5rem;
+    border: none;
+}
+
+.carousel-arrow:hover {
+    background: var(--accent-color);
+    color: var(--primary-dark);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-arrow:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-arrow.prev { left: 20px; }
+.carousel-arrow.next { right: 20px; }
+
+/* Carousel Indicators */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 10px;
+}
+
+.carousel-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicator.active {
+    background: var(--accent-color);
+    transform: scale(1.3);
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+}
+
+/* Card Counter */
+.card-counter {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.modal.show {
+    opacity: 1;
+    display: block;
+}
+
+.modal-content {
+    position: relative;
+    background-color: white;
+    margin: 5vh auto;
+    padding: 30px;
+    width: 90%;
+    max-width: 800px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-30px);
+    transition: transform var(--transition-speed);
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+}
+
+.close-button {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-light);
+    background: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-speed);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.close-button:hover {
+    background: var(--bg-light);
+    color: var(--primary-color);
+    transform: rotate(90deg);
+}
+
+.modal-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    margin-bottom: 25px;
+    box-shadow: var(--shadow-sm);
+}
+
+.modal-details {
+    margin-top: 25px;
+    padding: 0 10px;
+}
+
+.modal-details h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.modal-details p {
+    line-height: 1.8;
+    color: var(--text-light);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+/* Footer improvements */
+footer {
+    padding: 40px 20px;
+    margin-top: 60px;
+}
+  
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+}
+  
+.footer-column {
+    flex: 1 1 250px;
+}
+  
+.footer-column h3 {
+    margin-bottom: 20px;
+    color: var(--accent-color);
+}
+  
+.footer-column ul {
+    list-style: none;
+}
+  
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+  
+.footer-column a {
+    color: white;
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+  
+.footer-column a:hover {
+    color: var(--accent-color);
+}
+  
+.copyright {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive design improvements */
+@media (max-width: 992px) {
+    .carousel-container {
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 15px;
+    }
+    
+    nav ul li {
+        margin: 0 10px;
+    }
+    
+    .hero {
+        height: 60vh;
+    }
+    
+    section {
+        padding: 60px 15px;
+    }
+    
+    .ticket-section, .routes, .trains, .news-section {
+        padding: 40px 20px;
+    }
+    
+    .carousel-container {
+        max-width: 90%;
+        padding: 20px 0;
+    }
+    
+    .train-card {
+        padding: 20px;
+        min-height: 400px;
+    }
+    
+    .train-card img {
+        height: 200px;
+    }
+    
+    .carousel-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .carousel-arrow.prev { left: 10px; }
+    .carousel-arrow.next { right: 10px; }
+    
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    nav ul li {
+        margin: 5px 0;
+    }
+    
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+    
+    .ticket-section form {
+        flex-direction: column;
+    }
+    
+    .form-group {
+        width: 100%;
+    }
+    
+    .search-btn {
+        width: 100%;
+    }
+    
+    .train-card {
+        padding: 15px;
+        min-height: 350px;
+    }
+    
+    .train-card img {
+        height: 150px;
+    }
+    
+    .train-card h3 {
+        font-size: 1.4rem;
+    }
+    
+    .train-card p {
+        font-size: 1rem;
+    }
+    
+    .carousel-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+}
