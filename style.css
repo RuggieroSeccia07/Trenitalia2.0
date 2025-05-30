@@ -578,21 +578,76 @@ body {
     transform: translateY(1px);
 }
 
+/* Enhanced Search Button Styling */
 .search-btn {
-    background: var(--primary-color);
-    color: white;
-    padding: 12px 25px;
+    background: var(--accent-color);
+    color: var(--primary-color);
     border: none;
+    border-radius: 6px;
+    padding: 14px 35px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    min-width: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    box-shadow: 0 4px 15px rgba(255, 204, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.search-btn::before {
+    content: '\f002';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 10px;
+    font-size: 1em;
 }
 
 .search-btn:hover {
-    background: var(--primary-dark);
+    background: #ffdd33;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 51, 102, 0.3);
+    box-shadow: 0 6px 20px rgba(255, 204, 0, 0.3);
 }
 
 .search-btn:active {
     transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(255, 204, 0, 0.2);
+}
+
+/* Search button container with enhanced positioning */
+.ticket-section .search-btn-container {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    position: relative;
+}
+
+.ticket-section .search-btn-container::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: var(--accent-color);
+    opacity: 0.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .search-btn {
+        width: 100%;
+        max-width: 400px;
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
 }
 
 /* Improved sections */
@@ -639,10 +694,26 @@ section h2::after {
 .ticket-section form {
     display: flex;
     flex-wrap: wrap;
+    gap: 20px;
     justify-content: center;
-    gap: 15px;
-    max-width: 900px;
+    align-items: flex-start;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 20px;
+}
+
+.ticket-section .form-group {
+    flex: 1 1 300px;
+    max-width: 400px;
+    margin: 0;
+}
+
+/* Search button container */
+.ticket-section .search-btn-container {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .form-group {
@@ -1074,6 +1145,17 @@ footer {
         width: 95%;
         padding: 20px;
     }
+
+    .search-btn {
+        width: 100%;
+        max-width: 400px;
+        padding: 10px 20px;
+    }
+    
+    .ticket-section form {
+        gap: 15px;
+        padding: 15px;
+    }
 }
 
 
@@ -1206,4 +1288,544 @@ footer {
 
 .search-form .search-btn:hover {
     background-color: #c0392b;
+}
+
+/* Autocomplete styles */
+.autocomplete-wrapper {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.autocomplete-wrapper input {
+    width: 100%;
+    height: 48px; /* Fixed height for better control */
+    margin: 0;
+    padding: 12px 40px 12px 15px; /* Added right padding for icon */
+    box-sizing: border-box;
+}
+
+/* Fixed positioning for autocomplete list */
+.autocomplete-list {
+    position: absolute;
+    top: calc(100% + 5px); /* Small gap between input and list */
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none; /* Hidden by default */
+}
+
+.autocomplete-list.visible {
+    display: block;
+}
+
+/* Fix for input icons positioning */
+.form-group:has(#departure) .autocomplete-wrapper::before,
+.form-group:has(#destination) .autocomplete-wrapper::before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 15px;
+    top: 14px; /* Centered vertically in input */
+    color: white;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+/* Improved hit area for autocomplete items */
+.autocomplete-item {
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+/* Fix form group spacing */
+.ticket-section .form-group {
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 400px; /* Limit maximum width */
+}
+
+/* Ensure proper stacking context */
+.ticket-section form {
+    position: relative;
+    z-index: 1;
+}
+
+/* Fix for mobile devices */
+@media (max-width: 768px) {
+    .autocomplete-wrapper input {
+        height: 42px; /* Slightly smaller on mobile */
+        padding: 10px 35px 10px 12px;
+    }
+
+    .form-group:has(#departure) .autocomplete-wrapper::before,
+    .form-group:has(#destination) .autocomplete-wrapper::before {
+        top: 11px;
+        right: 12px;
+    }
+    
+    .ticket-section .form-group {
+        max-width: 100%; /* Full width on mobile */
+    }
+}
+
+/* Custom Date Input Styles */
+.form-group input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: white;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    background-image: linear-gradient(to right, var(--primary-color), var(--primary-dark));
+    background-clip: padding-box;
+    border: 2px solid transparent;
+}
+
+.form-group input[type="date"]::-webkit-calendar-picker-indicator {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='16' y1='2' x2='16' y2='6'%3E%3C/line%3E%3Cline x1='8' y1='2' x2='8' y2='6'%3E%3C/line%3E%3Cline x1='3' y1='10' x2='21' y2='10'%3E%3C/line%3E%3C/svg%3E");
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+    margin-right: 4px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.form-group input[type="date"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 51, 102, 0.2);
+    border-color: var(--accent-color);
+}
+
+.form-group input[type="date"]:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.form-group input[type="date"]:before {
+    content: attr(placeholder);
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.form-group input[type="date"]:valid:before,
+.form-group input[type="date"]:focus:before {
+    opacity: 0;
+}
+
+/* Calendar Dropdown Custom Styling */
+::-webkit-calendar-picker-indicator:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+/* Date Input Label Animation */
+.form-group label[for="date"] {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.form-group label[for="date"]:after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.form-group:hover label[for="date"]:after {
+    width: 100%;
+}
+
+/* Date Input Container Style */
+.form-group:has(input[type="date"]) {
+    position: relative;
+    overflow: hidden;
+}
+
+.form-group:has(input[type="date"])::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 204, 0, 0.1),
+        transparent
+    );
+    transition: left 0.5s ease;
+}
+
+.form-group:has(input[type="date"]):hover::before {
+    left: 100%;
+}
+
+/* Custom Date Value Color */
+.form-group input[type="date"] {
+    color: white;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.form-group input[type="date"]:valid {
+    color: white;
+    background-image: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
+}
+
+/* Responsive adjustments for date input */
+@media (max-width: 768px) {
+    .form-group input[type="date"] {
+        font-size: 0.95rem;
+        padding: 10px 12px;
+    }
+    
+    .form-group input[type="date"]::-webkit-calendar-picker-indicator {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* Keyboard navigation styles */
+.autocomplete-item.selected {
+    background-color: rgba(0, 51, 102, 0.05);
+    padding-left: 20px;
+    color: var(--primary-color);
+}
+
+/* Custom Input Styles for Ticket Section */
+.ticket-section .form-group {
+    position: relative;
+    overflow: visible;
+}
+
+/* Common styles for all inputs in ticket section */
+.ticket-section input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-clip: padding-box;
+}
+
+/* Simplified Input Styling for Departure and Destination */
+.form-group:has(#departure) .autocomplete-wrapper input,
+.form-group:has(#destination) .autocomplete-wrapper input {
+    background: var(--primary-color);
+    color: white;
+    border: 1px solid transparent;
+    transition: border-color 0.2s ease;
+    padding: 12px 35px 12px 15px;
+}
+
+.form-group:has(#departure) .autocomplete-wrapper input:hover,
+.form-group:has(#destination) .autocomplete-wrapper input:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: var(--accent-color);
+}
+
+.form-group:has(#departure) .autocomplete-wrapper input:focus,
+.form-group:has(#destination) .autocomplete-wrapper input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: none;
+    transform: none;
+}
+
+.form-group:has(#departure) label,
+.form-group:has(#destination) label {
+    color: var(--primary-color);
+}
+
+/* Remove shimmer effect for both inputs */
+.form-group:has(#departure)::before,
+.form-group:has(#destination)::before {
+    display: none;
+}
+
+/* Simplified placeholder for both inputs */
+.form-group:has(#departure) input::placeholder,
+.form-group:has(#destination) input::placeholder {
+    color: rgba(255, 255, 255, 0.9);
+    transition: none;
+}
+
+.form-group:has(#departure) input:focus::placeholder,
+.form-group:has(#destination) input:focus::placeholder {
+    opacity: 0.7;
+    transform: none;
+}
+
+/* Icons positioning */
+.form-group:has(#departure) .autocomplete-wrapper::before,
+.form-group:has(#destination) .autocomplete-wrapper::before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+.form-group:has(#departure) .autocomplete-wrapper::before {
+    content: '\f3c5'; /* Map marker icon */
+}
+
+.form-group:has(#destination) .autocomplete-wrapper::before {
+    content: '\f124'; /* Location arrow icon */
+}
+
+/* Autocomplete list styling */
+.autocomplete-list {
+    margin-top: 2px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.autocomplete-item {
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.autocomplete-item:hover,
+.autocomplete-item.selected {
+    background-color: #f5f5f5;
+    color: var(--primary-color);
+}
+
+/* Custom Date Picker Styles */
+.custom-date-picker {
+    position: relative;
+    width: 100%;
+}
+
+.custom-date-picker input {
+    width: 100%;
+    padding: 12px 40px 12px 15px;
+    background: var(--primary-color);
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.custom-date-picker input::placeholder {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.date-picker-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    pointer-events: none;
+}
+
+.date-picker-dropdown {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    width: 300px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.custom-date-picker.active .date-picker-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.date-picker-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.date-picker-header button {
+    background: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--primary-color);
+    transition: all 0.2s ease;
+}
+
+.date-picker-header button:hover {
+    background: rgba(0, 51, 102, 0.1);
+}
+
+.current-month {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 10px;
+    background: #f8f9fa;
+}
+
+.weekdays div {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 10px;
+    gap: 5px;
+}
+
+.days button {
+    width: 100%;
+    aspect-ratio: 1;
+    border: none;
+    background: none;
+    font-size: 0.9rem;
+    color: #333;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.days button:hover:not(:disabled) {
+    background: rgba(0, 51, 102, 0.1);
+}
+
+.days button.selected {
+    background: var(--primary-color);
+    color: white;
+}
+
+.days button:disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.days button.today {
+    border: 2px solid var(--accent-color);
+}
+
+.date-picker-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border-top: 1px solid #eee;
+}
+
+.date-picker-footer button {
+    background: none;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.today-btn {
+    color: var(--primary-color);
+}
+
+.clear-btn {
+    color: #666;
+}
+
+.date-picker-footer button:hover {
+    background: rgba(0, 51, 102, 0.1);
+}
+
+@media (max-width: 768px) {
+    .date-picker-dropdown {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    .custom-date-picker.active .date-picker-dropdown {
+        transform: translate(-50%, -50%);
+    }
 }

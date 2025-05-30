@@ -11,683 +11,1103 @@
 </head>
 
 <body>
-<body>
-    <!-- Navbar Mobile -->
-    <nav class="mobile-nav">
-        <button class="mobile-nav-toggle" id="mobileNavToggle">
-            <i class="fas fa-bars"></i>
-        </button>
-        <ul>
-            <li><a href="#home" class="active"><i class="fas fa-home"></i><span>Home</span></a></li>
-            <li><a href="#acquista"><i class="fas fa-ticket-alt"></i><span>Biglietti</span></a></li>
-            <li><a href="#treni"><i class="fas fa-train"></i><span>Treni</span></a></li>
-            <li><a href="#tratte"><i class="fas fa-route"></i><span>Tratte</span></a></li>
-            <li><a href="#news"><i class="fas fa-newspaper"></i><span>News</span></a></li>
-        </ul>
-    </nav>
 
-    <header>
-        <h1>Ferrovie dello Stato Italiane</h1>
-        <nav>
+    <body>
+        <!-- Navbar Mobile -->
+        <nav class="mobile-nav">
+            <button class="mobile-nav-toggle" id="mobileNavToggle">
+                <i class="fas fa-bars"></i>
+            </button>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#acquista">Acquista Biglietti</a></li>
-                <li><a href="#treni">Treni in Utilizzo</a></li>
-                <li><a href="#tratte">Tratte Regionali</a></li>
-                <li><a href="#news">Aggiornamenti</a></li>
+                <li><a href="#home" class="active"><i class="fas fa-home"></i><span>Home</span></a></li>
+                <li><a href="#acquista"><i class="fas fa-ticket-alt"></i><span>Biglietti</span></a></li>
+                <li><a href="#treni"><i class="fas fa-train"></i><span>Treni</span></a></li>
+                <li><a href="#tratte"><i class="fas fa-route"></i><span>Tratte</span></a></li>
+                <li><a href="#news"><i class="fas fa-newspaper"></i><span>News</span></a></li>
             </ul>
         </nav>
-    </header>
 
-
-    <section id="home" class="hero">
-        <img src="https://wips.plug.it/cips/initalia.virgilio.it/cms/2023/07/treni.jpg" alt=" Treno in movimento"
-            class="hero-image">
-        <h2>Benvenuti nelle Ferrovie dello Stato</h2>
-        <p>Acquista biglietti, scopri informazioni sui treni e rimani aggiornato sulle tratte ferroviarie.</p>
-        <button class="cta">Scopri di più</button>
-
-    </section>
-
-    <section id="acquista" class="ticket-section">
-        <h2>Acquista il tuo biglietto</h2>
-        <form>
-            <div class="form-group">
-                <label for="departure">Partenza</label>
-                <input type="text" id="departure" placeholder="Stazione di partenza">
-            </div>
-            <div class="form-group">
-                <label for="destination">Destinazione</label>
-                <input type="text" id="destination" placeholder="Stazione di arrivo">
-            </div>
-            <div class="form-group">
-                <label for="date">Data</label>
-                <input type="date" id="date">
-            </div>
-            <button type="submit" class="search-btn">Cerca</button>
-        </form>
-    </section>
-
-    <section id="treni" class="trains">
-        <h2>Treni in Utilizzo</h2>
-        <div class="carousel-container">
-            <div class="carousel-track" id="trainCarousel">
-                <!-- Le card verranno generate dinamicamente dal JavaScript -->
-            </div>
-
-            <button class="carousel-arrow prev" aria-label="Precedente">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-
-            <button class="carousel-arrow next" aria-label="Successivo">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-
-            <div class="carousel-indicators" id="carouselIndicators">
-                <!-- Gli indicatori verranno generati dinamicamente dal JavaScript -->
-            </div>
-
-            <div class="card-counter">
-                <span id="currentCard">1</span>/<span id="totalCards">12</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="tratte" class="routes">
-        <h2>Principali Tratte Ferroviarie</h2>
-        <p>Scopri le principali linee ferroviarie italiane, le stazioni servite e i treni che vi circolano.</p>
-
-        <div class="routes-container">
-            <!-- Linee Alta Velocità -->
-            <div class="route-category">
-                <h3>Linee Alta Velocità</h3>
-
-                <div class="route-card">
-                    <h4>Torino - Milano - Bologna - Firenze - Roma - Napoli - Salerno</h4>
-                    <p class="route-description">La dorsale principale dell'Alta Velocità italiana che collega le
-                        maggiori città del paese.</p>
-                    <div class="route-details">
-                        <div class="stations">
-                            <h5>Principali stazioni:</h5>
-                            <ul>
-                                <li>Torino Porta Nuova</li>
-                                <li>Milano Centrale</li>
-                                <li>Bologna Centrale AV</li>
-                                <li>Firenze S.M. Novella</li>
-                                <li>Roma Termini/Tiburtina</li>
-                                <li>Napoli Centrale</li>
-                                <li>Salerno</li>
-                            </ul>
-                        </div>
-                        <div class="trains">
-                            <h5>Treni:</h5>
-                            <ul>
-                                <li>Frecciarossa 1000</li>
-                                <li>Frecciarossa ETR 500</li>
-                                <li>Italo AGV</li>
-                                <li>Italo EVO</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="route-card">
-                    <h4>Direttissima Roma - Firenze</h4>
-                    <p class="route-description">Prima linea ad Alta Velocità costruita in Italia, collega Roma a
-                        Firenze in circa 1h30.</p>
-                    <div class="route-details">
-                        <div class="stations">
-                            <h5>Principali stazioni:</h5>
-                            <ul>
-                                <li>Roma Termini/Tiburtina</li>
-                                <li>Orte</li>
-                                <li>Arezzo</li>
-                                <li>Firenze S.M. Novella</li>
-                            </ul>
-                        </div>
-                        <div class="trains">
-                            <h5>Treni:</h5>
-                            <ul>
-                                <li>Frecciarossa</li>
-                                <li>Frecciargento</li>
-                                <li>Italo</li>
-                                <li>Intercity</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="route-card">
-                    <h4>Milano - Brescia - Verona - Padova - Venezia</h4>
-                    <p class="route-description">Linea AV/AC che collega Milano con il Nord-Est italiano.</p>
-                    <div class="route-details">
-                        <div class="stations">
-                            <h5>Principali stazioni:</h5>
-                            <ul>
-                                <li>Milano Centrale</li>
-                                <li>Brescia</li>
-                                <li>Verona Porta Nuova</li>
-                                <li>Vicenza</li>
-                                <li>Padova</li>
-                                <li>Venezia S. Lucia/Mestre</li>
-                            </ul>
-                        </div>
-                        <div class="trains">
-                            <h5>Treni:</h5>
-                            <ul>
-                                <li>Frecciarossa</li>
-                                <li>Frecciargento</li>
-                                <li>Italo</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Linee Tradizionali Principali -->
-            <div class="route-category">
-                <h3>Linee Tradizionali Principali</h3>
-
-                <div class="route-card">
-                    <h4>Linea Adriatica (Bologna - Ancona - Pescara - Bari - Lecce)</h4>
-                    <p class="route-description">Importante collegamento lungo la costa adriatica che unisce il Nord al
-                        Sud-Est italiano.</p>
-                    <div class="route-details">
-                        <div class="stations">
-                            <h5>Principali stazioni:</h5>
-                            <ul>
-                                <li>Bologna Centrale</li>
-                                <li>Rimini</li>
-                                <li>Ancona</li>
-                                <li>Pescara</li>
-                                <li>Foggia</li>
-                                <li>Bari Centrale</li>
-                                <li>Brindisi</li>
-                                <li>Lecce</li>
-                            </ul>
-                        </div>
-                        <div class="trains">
-                            <h5>Treni:</h5>
-                            <ul>
-                                <li>Frecciarossa</li>
-                                <li>Frecciargento</li>
-                                <li>Frecciabianca</li>
-                                <li>Intercity</li>
-                                <li>Regionali</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="route-card">
-                    <h4>Tirrenica (Genova - La Spezia - Pisa - Roma)</h4>
-                    <p class="route-description">Linea che costeggia il Mar Tirreno collegando Liguria, Toscana e Lazio.
-                    </p>
-                    <div class="route-details">
-                        <div class="stations">
-                            <h5>Principali stazioni:</h5>
-                            <ul>
-                                <li>Genova P. Principe</li>
-                                <li>La Spezia</li>
-                                <li>Pisa Centrale</li>
-                                <li>Livorno</li>
-                                <li>Grosseto</li>
-                                <li>Civitavecchia</li>
-                                <li>Roma Termini</li>
-                            </ul>
-                        </div>
-                        <div class="trains">
-                            <h5>Treni:</h5>
-                            <ul>
-                                <li>Frecciabianca</li>
-                                <li>Intercity</li>
-                                <li>Regionali</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="route-card">
-                    <h4>Torino - Milano - Venezia</h4>
-                    <p class="route-description">Linea storica che attraversa la Pianura Padana collegando le principali
-                        città del Nord Italia.</p>
-                    <div class="route-details">
-                        <div class="stations">
-                            <h5>Principali stazioni:</h5>
-                            <ul>
-                                <li>Torino Porta Nuova</li>
-                                <li>Novara</li>
-                                <li>Milano Centrale</li>
-                                <li>Brescia</li>
-                                <li>Verona Porta Nuova</li>
-                                <li>Vicenza</li>
-                                <li>Padova</li>
-                                <li>Venezia S. Lucia</li>
-                            </ul>
-                        </div>
-                        <div class="trains">
-                            <h5>Treni:</h5>
-                            <ul>
-                                <li>Frecciarossa</li>
-                                <li>Frecciabianca</li>
-                                <li>Regionali Veloci</li>
-                                <li>Regionali</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Linee Regionali Importanti -->
-            <div class="route-category">
-                <h3>Linee Regionali Importanti</h3>
-
-                <div class="route-card">
-                    <h4>Roma - Napoli (via Formia)</h4>
-                    <p class="route-description">Linea storica che collega Roma a Napoli passando per il litorale
-                        laziale e campano.</p>
-                    <div class="route-details">
-                        <div class="stations">
-                            <h5>Principali stazioni:</h5>
-                            <ul>
-                                <li>Roma Termini</li>
-                                <li>Latina</li>
-                                <li>Formia</li>
-                                <li>Aversa</li>
-                                <li>Napoli Centrale</li>
-                            </ul>
-                        </div>
-                        <div class="trains">
-                            <h5>Treni:</h5>
-                            <ul>
-                                <li>Intercity</li>
-                                <li>Regionali Veloci</li>
-                                <li>Regionali</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="route-card">
-                    <h4>Bari - Taranto</h4>
-                    <p class="route-description">Importante collegamento tra i due principali centri della Puglia.</p>
-                    <div class="route-details">
-                        <div class="stations">
-                            <h5>Principali stazioni:</h5>
-                            <ul>
-                                <li>Bari Centrale</li>
-                                <li>Gioia del Colle</li>
-                                <li>Taranto</li>
-                            </ul>
-                        </div>
-                        <div class="trains">
-                            <h5>Treni:</h5>
-                            <ul>
-                                <li>Frecciargento</li>
-                                <li>Intercity</li>
-                                <li>Regionali</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="route-card">
-                    <h4>Torino - Genova</h4>
-                    <p class="route-description">Linea che collega il Piemonte alla Liguria attraversando l'Appennino.
-                    </p>
-                    <div class="route-details">
-                        <div class="stations">
-                            <h5>Principali stazioni:</h5>
-                            <ul>
-                                <li>Torino Porta Nuova</li>
-                                <li>Asti</li>
-                                <li>Alessandria</li>
-                                <li>Novi Ligure</li>
-                                <li>Genova P. Principe</li>
-                            </ul>
-                        </div>
-                        <div class="trains">
-                            <h5>Treni:</h5>
-                            <ul>
-                                <li>Intercity</li>
-                                <li>Regionali Veloci</li>
-                                <li>Regionali</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="route-card">
-                    <h4>Milano - Domodossola (Sempione)</h4>
-                    <p class="route-description">Linea internazionale che collega l'Italia alla Svizzera attraverso il
-                        Passo del Sempione.</p>
-                    <div class="route-details">
-                        <div class="stations">
-                            <h5>Principali stazioni:</h5>
-                            <ul>
-                                <li>Milano Centrale</li>
-                                <li>Gallarate</li>
-                                <li>Arona</li>
-                                <li>Stresa</li>
-                                <li>Domodossola</li>
-                            </ul>
-                        </div>
-                        <div class="trains">
-                            <h5>Treni:</h5>
-                            <ul>
-                                <li>Eurocity</li>
-                                <li>Regionali</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Linee Turistiche -->
-            <div class="route-category">
-                <h3>Linee Turistiche e Storiche</h3>
-
-                <div class="route-card">
-                    <h4>Circumvesuviana (Napoli - Sorrento)</h4>
-                    <p class="route-description">Linea che collega Napoli con Sorrento passando per Pompei ed Ercolano.
-                    </p>
-                    <div class="route-details">
-                        <div class="stations">
-                            <h5>Principali stazioni:</h5>
-                            <ul>
-                                <li>Napoli Porta Nolana</li>
-                                <li>Ercolano Scavi</li>
-                                <li>Pompei Scavi</li>
-                                <li>Castellammare di Stabia</li>
-                                <li>Sorrento</li>
-                            </ul>
-                        </div>
-                        <div class="trains">
-                            <h5>Treni:</h5>
-                            <ul>
-                                <li>Treni EAV</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="route-card">
-                    <h4>Ferrovia del Bernina (Tirano - St. Moritz)</h4>
-                    <p class="route-description">Patrimonio UNESCO, collega l'Italia alla Svizzera attraverso paesaggi
-                        alpini mozzafiato.</p>
-                    <div class="route-details">
-                        <div class="stations">
-                            <h5>Principali stazioni:</h5>
-                            <ul>
-                                <li>Tirano</li>
-                                <li>Poschiavo</li>
-                                <li>Ospizio Bernina</li>
-                                <li>St. Moritz</li>
-                            </ul>
-                        </div>
-                        <div class="trains">
-                            <h5>Treni:</h5>
-                            <ul>
-                                <li>Bernina Express</li>
-                                <li>Treni regionali RhB</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="route-card">
-                    <h4>Transiberiana d'Italia (Sulmona - Isernia)</h4>
-                    <p class="route-description">Ferrovia storica che attraversa gli Appennini abruzzesi e molisani a
-                        oltre 1200m di altitudine.</p>
-                    <div class="route-details">
-                        <div class="stations">
-                            <h5>Principali stazioni:</h5>
-                            <ul>
-                                <li>Sulmona</li>
-                                <li>Campo di Giove</li>
-                                <li>Roccaraso</li>
-                                <li>Castel di Sangro</li>
-                                <li>Isernia</li>
-                            </ul>
-                        </div>
-                        <div class="trains">
-                            <h5>Treni:</h5>
-                            <ul>
-                                <li>Treni storici</li>
-                                <li>Treni turistici</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="route-search">
-            <h3>Cerca una tratta specifica</h3>
-            <div class="search-form">
-                <input type="text" id="route-search" placeholder="Inserisci città di partenza o arrivo">
-                <button type="button" class="search-btn">Cerca</button>
-            </div>
-        </div>
-    </section>
-
-
-    <section id="news" class="news-section">
-        <h2>Aggiornamenti</h2>
-        <p>Ultime novità su orari, treni e tecnologie ferroviarie.</p>
-    </section>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>Informazioni</h3>
+        <header>
+            <h1>Ferrovie dello Stato Italiane</h1>
+            <nav>
                 <ul>
-                    <li><a href="#">Chi siamo</a></li>
-                    <li><a href="#">Lavora con noi</a></li>
-                    <li><a href="#">Sostenibilità</a></li>
-                    <li><a href="#">Contatti</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#acquista">Acquista Biglietti</a></li>
+                    <li><a href="#treni">Treni in Utilizzo</a></li>
+                    <li><a href="#tratte">Tratte Regionali</a></li>
+                    <li><a href="#news">Aggiornamenti</a></li>
                 </ul>
+            </nav>
+        </header>
+
+
+        <section id="home" class="hero">
+            <img src="https://wips.plug.it/cips/initalia.virgilio.it/cms/2023/07/treni.jpg" alt=" Treno in movimento"
+                class="hero-image">
+            <h2>Benvenuti nelle Ferrovie dello Stato</h2>
+            <p>Acquista biglietti, scopri informazioni sui treni e rimani aggiornato sulle tratte ferroviarie.</p>
+            <button class="cta">Scopri di più</button>
+
+        </section>
+
+        <section id="acquista" class="ticket-section">
+            <h2>Acquista il tuo biglietto</h2>
+            <form>
+                <div class="form-group">
+                    <label for="departure">Partenza</label>
+                    <div class="autocomplete-wrapper">
+                        <input type="text" id="departure" placeholder="Stazione di partenza">
+                        <div class="autocomplete-list" id="departure-list"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="destination">Destinazione</label>
+                    <div class="autocomplete-wrapper">
+                        <input type="text" id="destination" placeholder="Stazione di arrivo">
+                        <div class="autocomplete-list" id="destination-list"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="date">Data</label>
+                    <div class="custom-date-picker">
+                        <input type="text" id="date" placeholder="Seleziona data" readonly>
+                        <div class="date-picker-toggle">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="date-picker-dropdown">
+                            <div class="date-picker-header">
+                                <button type="button" class="prev-month"><i class="fas fa-chevron-left"></i></button>
+                                <div class="current-month">Dicembre 2023</div>
+                                <button type="button" class="next-month"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                            <div class="weekdays">
+                                <div>Dom</div>
+                                <div>Lun</div>
+                                <div>Mar</div>
+                                <div>Mer</div>
+                                <div>Gio</div>
+                                <div>Ven</div>
+                                <div>Sab</div>
+                            </div>
+                            <div class="days">
+                                <!-- I giorni verranno inseriti dinamicamente via JavaScript -->
+                            </div>
+                            <div class="date-picker-footer">
+                                <button type="button" class="today-btn">Oggi</button>
+                                <button type="button" class="clear-btn">Cancella</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-btn-container">
+                    <button type="submit" class="search-btn">Cerca</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="treni" class="trains">
+            <h2>Treni in Utilizzo</h2>
+            <div class="carousel-container">
+                <div class="carousel-track" id="trainCarousel">
+                    <!-- Le card verranno generate dinamicamente dal JavaScript -->
+                </div>
+
+                <button class="carousel-arrow prev" aria-label="Precedente">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <button class="carousel-arrow next" aria-label="Successivo">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <div class="carousel-indicators" id="carouselIndicators">
+                    <!-- Gli indicatori verranno generati dinamicamente dal JavaScript -->
+                </div>
+
+                <div class="card-counter">
+                    <span id="currentCard">1</span>/<span id="totalCards">12</span>
+                </div>
             </div>
-            <div class="footer-column">
-                <h3>Servizi</h3>
-                <ul>
-                    <li><a href="#">Assistenza</a></li>
-                    <li><a href="#">Rimborsi</a></li>
-                    <li><a href="#">Abbonamenti</a></li>
-                    <li><a href="#">Servizi in stazione</a></li>
-                </ul>
+        </section>
+
+        <section id="tratte" class="routes">
+            <h2>Principali Tratte Ferroviarie</h2>
+            <p>Scopri le principali linee ferroviarie italiane, le stazioni servite e i treni che vi circolano.</p>
+
+            <div class="routes-container">
+                <!-- Linee Alta Velocità -->
+                <div class="route-category">
+                    <h3>Linee Alta Velocità</h3>
+
+                    <div class="route-card">
+                        <h4>Torino - Milano - Bologna - Firenze - Roma - Napoli - Salerno</h4>
+                        <p class="route-description">La dorsale principale dell'Alta Velocità italiana che collega le
+                            maggiori città del paese.</p>
+                        <div class="route-details">
+                            <div class="stations">
+                                <h5>Principali stazioni:</h5>
+                                <ul>
+                                    <li>Torino Porta Nuova</li>
+                                    <li>Milano Centrale</li>
+                                    <li>Bologna Centrale AV</li>
+                                    <li>Firenze S.M. Novella</li>
+                                    <li>Roma Termini/Tiburtina</li>
+                                    <li>Napoli Centrale</li>
+                                    <li>Salerno</li>
+                                </ul>
+                            </div>
+                            <div class="trains">
+                                <h5>Treni:</h5>
+                                <ul>
+                                    <li>Frecciarossa 1000</li>
+                                    <li>Frecciarossa ETR 500</li>
+                                    <li>Italo AGV</li>
+                                    <li>Italo EVO</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="route-card">
+                        <h4>Direttissima Roma - Firenze</h4>
+                        <p class="route-description">Prima linea ad Alta Velocità costruita in Italia, collega Roma a
+                            Firenze in circa 1h30.</p>
+                        <div class="route-details">
+                            <div class="stations">
+                                <h5>Principali stazioni:</h5>
+                                <ul>
+                                    <li>Roma Termini/Tiburtina</li>
+                                    <li>Orte</li>
+                                    <li>Arezzo</li>
+                                    <li>Firenze S.M. Novella</li>
+                                </ul>
+                            </div>
+                            <div class="trains">
+                                <h5>Treni:</h5>
+                                <ul>
+                                    <li>Frecciarossa</li>
+                                    <li>Frecciargento</li>
+                                    <li>Italo</li>
+                                    <li>Intercity</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="route-card">
+                        <h4>Milano - Brescia - Verona - Padova - Venezia</h4>
+                        <p class="route-description">Linea AV/AC che collega Milano con il Nord-Est italiano.</p>
+                        <div class="route-details">
+                            <div class="stations">
+                                <h5>Principali stazioni:</h5>
+                                <ul>
+                                    <li>Milano Centrale</li>
+                                    <li>Brescia</li>
+                                    <li>Verona Porta Nuova</li>
+                                    <li>Vicenza</li>
+                                    <li>Padova</li>
+                                    <li>Venezia S. Lucia/Mestre</li>
+                                </ul>
+                            </div>
+                            <div class="trains">
+                                <h5>Treni:</h5>
+                                <ul>
+                                    <li>Frecciarossa</li>
+                                    <li>Frecciargento</li>
+                                    <li>Italo</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Linee Tradizionali Principali -->
+                <div class="route-category">
+                    <h3>Linee Tradizionali Principali</h3>
+
+                    <div class="route-card">
+                        <h4>Linea Adriatica (Bologna - Ancona - Pescara - Bari - Lecce)</h4>
+                        <p class="route-description">Importante collegamento lungo la costa adriatica che unisce il Nord
+                            al
+                            Sud-Est italiano.</p>
+                        <div class="route-details">
+                            <div class="stations">
+                                <h5>Principali stazioni:</h5>
+                                <ul>
+                                    <li>Bologna Centrale</li>
+                                    <li>Rimini</li>
+                                    <li>Ancona</li>
+                                    <li>Pescara</li>
+                                    <li>Foggia</li>
+                                    <li>Bari Centrale</li>
+                                    <li>Brindisi</li>
+                                    <li>Lecce</li>
+                                </ul>
+                            </div>
+                            <div class="trains">
+                                <h5>Treni:</h5>
+                                <ul>
+                                    <li>Frecciarossa</li>
+                                    <li>Frecciargento</li>
+                                    <li>Frecciabianca</li>
+                                    <li>Intercity</li>
+                                    <li>Regionali</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="route-card">
+                        <h4>Tirrenica (Genova - La Spezia - Pisa - Roma)</h4>
+                        <p class="route-description">Linea che costeggia il Mar Tirreno collegando Liguria, Toscana e
+                            Lazio.
+                        </p>
+                        <div class="route-details">
+                            <div class="stations">
+                                <h5>Principali stazioni:</h5>
+                                <ul>
+                                    <li>Genova P. Principe</li>
+                                    <li>La Spezia</li>
+                                    <li>Pisa Centrale</li>
+                                    <li>Livorno</li>
+                                    <li>Grosseto</li>
+                                    <li>Civitavecchia</li>
+                                    <li>Roma Termini</li>
+                                </ul>
+                            </div>
+                            <div class="trains">
+                                <h5>Treni:</h5>
+                                <ul>
+                                    <li>Frecciabianca</li>
+                                    <li>Intercity</li>
+                                    <li>Regionali</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="route-card">
+                        <h4>Torino - Milano - Venezia</h4>
+                        <p class="route-description">Linea storica che attraversa la Pianura Padana collegando le
+                            principali
+                            città del Nord Italia.</p>
+                        <div class="route-details">
+                            <div class="stations">
+                                <h5>Principali stazioni:</h5>
+                                <ul>
+                                    <li>Torino Porta Nuova</li>
+                                    <li>Novara</li>
+                                    <li>Milano Centrale</li>
+                                    <li>Brescia</li>
+                                    <li>Verona Porta Nuova</li>
+                                    <li>Vicenza</li>
+                                    <li>Padova</li>
+                                    <li>Venezia S. Lucia</li>
+                                </ul>
+                            </div>
+                            <div class="trains">
+                                <h5>Treni:</h5>
+                                <ul>
+                                    <li>Frecciarossa</li>
+                                    <li>Frecciabianca</li>
+                                    <li>Regionali Veloci</li>
+                                    <li>Regionali</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Linee Regionali Importanti -->
+                <div class="route-category">
+                    <h3>Linee Regionali Importanti</h3>
+
+                    <div class="route-card">
+                        <h4>Roma - Napoli (via Formia)</h4>
+                        <p class="route-description">Linea storica che collega Roma a Napoli passando per il litorale
+                            laziale e campano.</p>
+                        <div class="route-details">
+                            <div class="stations">
+                                <h5>Principali stazioni:</h5>
+                                <ul>
+                                    <li>Roma Termini</li>
+                                    <li>Latina</li>
+                                    <li>Formia</li>
+                                    <li>Aversa</li>
+                                    <li>Napoli Centrale</li>
+                                </ul>
+                            </div>
+                            <div class="trains">
+                                <h5>Treni:</h5>
+                                <ul>
+                                    <li>Intercity</li>
+                                    <li>Regionali Veloci</li>
+                                    <li>Regionali</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="route-card">
+                        <h4>Bari - Taranto</h4>
+                        <p class="route-description">Importante collegamento tra i due principali centri della Puglia.
+                        </p>
+                        <div class="route-details">
+                            <div class="stations">
+                                <h5>Principali stazioni:</h5>
+                                <ul>
+                                    <li>Bari Centrale</li>
+                                    <li>Gioia del Colle</li>
+                                    <li>Taranto</li>
+                                </ul>
+                            </div>
+                            <div class="trains">
+                                <h5>Treni:</h5>
+                                <ul>
+                                    <li>Frecciargento</li>
+                                    <li>Intercity</li>
+                                    <li>Regionali</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="route-card">
+                        <h4>Torino - Genova</h4>
+                        <p class="route-description">Linea che collega il Piemonte alla Liguria attraversando
+                            l'Appennino.
+                        </p>
+                        <div class="route-details">
+                            <div class="stations">
+                                <h5>Principali stazioni:</h5>
+                                <ul>
+                                    <li>Torino Porta Nuova</li>
+                                    <li>Asti</li>
+                                    <li>Alessandria</li>
+                                    <li>Novi Ligure</li>
+                                    <li>Genova P. Principe</li>
+                                </ul>
+                            </div>
+                            <div class="trains">
+                                <h5>Treni:</h5>
+                                <ul>
+                                    <li>Intercity</li>
+                                    <li>Regionali Veloci</li>
+                                    <li>Regionali</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="route-card">
+                        <h4>Milano - Domodossola (Sempione)</h4>
+                        <p class="route-description">Linea internazionale che collega l'Italia alla Svizzera attraverso
+                            il
+                            Passo del Sempione.</p>
+                        <div class="route-details">
+                            <div class="stations">
+                                <h5>Principali stazioni:</h5>
+                                <ul>
+                                    <li>Milano Centrale</li>
+                                    <li>Gallarate</li>
+                                    <li>Arona</li>
+                                    <li>Stresa</li>
+                                    <li>Domodossola</li>
+                                </ul>
+                            </div>
+                            <div class="trains">
+                                <h5>Treni:</h5>
+                                <ul>
+                                    <li>Eurocity</li>
+                                    <li>Regionali</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Linee Turistiche -->
+                <div class="route-category">
+                    <h3>Linee Turistiche e Storiche</h3>
+
+                    <div class="route-card">
+                        <h4>Circumvesuviana (Napoli - Sorrento)</h4>
+                        <p class="route-description">Linea che collega Napoli con Sorrento passando per Pompei ed
+                            Ercolano.
+                        </p>
+                        <div class="route-details">
+                            <div class="stations">
+                                <h5>Principali stazioni:</h5>
+                                <ul>
+                                    <li>Napoli Porta Nolana</li>
+                                    <li>Ercolano Scavi</li>
+                                    <li>Pompei Scavi</li>
+                                    <li>Castellammare di Stabia</li>
+                                    <li>Sorrento</li>
+                                </ul>
+                            </div>
+                            <div class="trains">
+                                <h5>Treni:</h5>
+                                <ul>
+                                    <li>Treni EAV</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="route-card">
+                        <h4>Ferrovia del Bernina (Tirano - St. Moritz)</h4>
+                        <p class="route-description">Patrimonio UNESCO, collega l'Italia alla Svizzera attraverso
+                            paesaggi
+                            alpini mozzafiato.</p>
+                        <div class="route-details">
+                            <div class="stations">
+                                <h5>Principali stazioni:</h5>
+                                <ul>
+                                    <li>Tirano</li>
+                                    <li>Poschiavo</li>
+                                    <li>Ospizio Bernina</li>
+                                    <li>St. Moritz</li>
+                                </ul>
+                            </div>
+                            <div class="trains">
+                                <h5>Treni:</h5>
+                                <ul>
+                                    <li>Bernina Express</li>
+                                    <li>Treni regionali RhB</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="route-card">
+                        <h4>Transiberiana d'Italia (Sulmona - Isernia)</h4>
+                        <p class="route-description">Ferrovia storica che attraversa gli Appennini abruzzesi e molisani
+                            a
+                            oltre 1200m di altitudine.</p>
+                        <div class="route-details">
+                            <div class="stations">
+                                <h5>Principali stazioni:</h5>
+                                <ul>
+                                    <li>Sulmona</li>
+                                    <li>Campo di Giove</li>
+                                    <li>Roccaraso</li>
+                                    <li>Castel di Sangro</li>
+                                    <li>Isernia</li>
+                                </ul>
+                            </div>
+                            <div class="trains">
+                                <h5>Treni:</h5>
+                                <ul>
+                                    <li>Treni storici</li>
+                                    <li>Treni turistici</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="footer-column">
-                <h3>Seguici</h3>
-                <ul>
-                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-                    <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-                </ul>
+
+            <div class="route-search">
+                <h3>Cerca una tratta specifica</h3>
+                <div class="search-form">
+                    <input type="text" id="route-search" placeholder="Inserisci città di partenza o arrivo">
+                    <button type="button" class="search-btn">Cerca</button>
+                </div>
             </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2025 Ferrovie dello Stato Italiane. Tutti i diritti riservati.</p>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Dati dei treni
-            const trainCards = [
-                {
-                    image: 'https://www.thetrainline.com/cmsmedia/cms/9533/trenitalia_hero_2x.jpg',
-                    title: 'Frecciarossa 1000',
-                    description: 'Ammiraglia dell\'Alta Velocità italiana, raggiunge i 360 km/h con interni di design e 4 livelli di servizio. Connessione Wi-Fi gratuita e sistema di intrattenimento a bordo.',
-                    details: {
-                        speed: '360 km/h',
-                        comfort: 'Executive',
-                        route: 'TO-MI-RM-NA'
-                    }
-                },
-                {
-                    image: 'https://cdn3.trainspictures.com/pictures/45/06/1920.jpg',
-                    title: 'Frecciargento',
-                    description: 'Treno ad assetto variabile che si adatta perfettamente sia alle linee AV che a quelle tradizionali. Ideale per collegamenti verso città non servite da linee dedicate all\'Alta Velocità.',
-                    details: {
-                        speed: '250 km/h',
-                        comfort: 'Business',
-                        route: 'RM-VE'
-                    }
-                },
-                {
-                    image: 'https://www.ilportaledeitreni.it/wp-content/uploads/2017/07/SAM_2915-1.jpg',
-                    title: 'Frecciabianca',
-                    description: 'Collega le principali città italiane su linee convenzionali con elevati standard di comfort. Perfetto equilibrio tra velocità e capillarità del servizio.',
-                    details: {
-                        speed: '200 km/h',
-                        comfort: 'Standard Plus',
-                        route: 'MI-GE-RM'
-                    }
-                },
-                {
-                    image: 'https://travelwonderer.it/wp-content/uploads/2020/10/Italia-Lazio-Roma-treno-Termini-Italo-1.jpg',
-                    title: 'Italo AGV',
-                    description: 'Primo treno ad Alta Velocità completamente interoperabile in Europa, unisce tecnologia francese e design italiano. Silenzioso, ecologico e con ambienti eleganti.',
-                    details: {
-                        speed: '300 km/h',
-                        comfort: 'Club',
-                        route: 'MI-RM-NA'
-                    }
-                },
-                {
-                    image: 'https://live.staticflickr.com/4906/45425213395_562c91e69a_b.jpg',
-                    title: 'Italo EVO',
-                    description: 'Evoluzione della flotta Italo con maggiore efficienza energetica e ridotto impatto ambientale. Dotato di sistema di illuminazione LED e materiali riciclabili al 98%.',
-                    details: {
-                        speed: '300 km/h',
-                        comfort: 'Prima',
-                        route: 'TO-MI-VE'
-                    }
-                },
-                {
-                    image: 'https://www.rainews.it/dl/img/2022/05/1600x1200_1653212302328.Stazione_di_Romagnano_Vietri_Salvitelle___treno_Intercity___locomotiva_E.401.036.jpg',
-                    title: 'Intercity',
-                    description: 'Servizio di media-lunga percorrenza che garantisce collegamenti tra centri urbani di medie e grandi dimensioni. Carrozze rinnovate con prese elettriche e spazi per biciclette.',
-                    details: {
-                        speed: '200 km/h',
-                        comfort: 'Standard',
-                        route: 'BO-BA'
-                    }
-                },
-                {
-                    image: 'https://www.ilportaledeitreni.it/wp-content/uploads/2025/01/IC-NOTTE-61-8329-90-833-8-I-TI.jpg',
-                    title: 'Intercity Notte',
-                    description: 'Viaggia mentre dormi attraversando l\'Italia da nord a sud. Scompartimenti con cuccette e vagoni letto per un riposo confortevole durante il viaggio notturno.',
-                    details: {
-                        speed: '160 km/h',
-                        comfort: 'Cuccette',
-                        route: 'MI-PA'
-                    }
-                },
-                {
-                    image: 'https://www.primocanale.it/materialiarchivio/immagininews/20151013192404-treni_vivalto.jpg',
-                    title: 'Regionale Veloce',
-                    description: 'Servizio potenziato con fermate ridotte per collegamenti rapidi tra centri regionali importanti. Ideale per pendolari che necessitano di spostamenti veloci.',
-                    details: {
-                        speed: '160 km/h',
-                        comfort: 'Standard',
-                        route: 'FI-PI'
-                    }
-                },
-                {
-                    image: 'https://www.cittadellaspezia.com/photogallery_new/images/2023/06/treno-in-liguria-432848.jpg',
-                    title: 'Rock',
-                    description: 'Treno regionale di ultima generazione a doppio piano con capacità fino a 1.400 passeggeri. Dotato di videosorveglianza, Wi-Fi e aree per biciclette e bagagli.',
-                    details: {
-                        speed: '160 km/h',
-                        comfort: 'Avanzato',
-                        route: 'Regionali'
-                    }
-                },
-                {
-                    image: 'https://www.ferrovie.it/portale/images/articoli/10300101.jpg',
-                    title: 'Pop',
-                    description: 'Convoglio mono piano ad alta sostenibilità ambientale, costruito con materiali riciclabili e consumi ridotti del 30%. Accessibilità totale per persone a mobilità ridotta.',
-                    details: {
-                        speed: '160 km/h',
-                        comfort: 'Moderno',
-                        route: 'Regionali'
-                    }
-                },
-                {
-                    image: 'https://www.triesteallnews.it/wp-content/images/2025/02/trieste@news-Arlecchino.jpg',
-                    title: 'Treni Storici',
-                    description: 'Autentici gioielli ferroviari restaurati che raccontano la storia delle ferrovie italiane. Viaggi emozionanti su convogli d\'epoca attraverso paesaggi mozzafiato.',
-                    details: {
-                        speed: '100 km/h',
-                        comfort: 'Vintage',
-                        route: 'Turistiche'
-                    }
-                },
-                {
-                    image: 'https://www.stagniweb.it/altro2/large7/tti_4835.jpg',
-                    title: 'Treni Turistici',
-                    description: 'Itinerari dedicati alla scoperta di borghi, parchi naturali e siti UNESCO. Esperienza di viaggio lenta e immersiva con carrozze panoramiche e guide a bordo.',
-                    details: {
-                        speed: '100 km/h',
-                        comfort: 'Vintage',
-                        route: 'Turistiche'
-                    }
-                }
-            ];
+        </section>
 
 
-            // Configurazione del carousel
-            const carousel = document.getElementById('trainCarousel');
-            const indicators = document.getElementById('carouselIndicators');
-            const prevBtn = document.querySelector('.carousel-arrow.prev');
-            const nextBtn = document.querySelector('.carousel-arrow.next');
-            const currentCardEl = document.getElementById('currentCard');
-            const totalCardsEl = document.getElementById('totalCards');
+        <section id="news" class="news-section">
+            <h2>Aggiornamenti</h2>
+            <p>Ultime novità su orari, treni e tecnologie ferroviarie.</p>
+        </section>
 
-            let currentIndex = 0;
-            const totalCards = trainCards.length;
+        <footer>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Informazioni</h3>
+                    <ul>
+                        <li><a href="#">Chi siamo</a></li>
+                        <li><a href="#">Lavora con noi</a></li>
+                        <li><a href="#">Sostenibilità</a></li>
+                        <li><a href="#">Contatti</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Servizi</h3>
+                    <ul>
+                        <li><a href="#">Assistenza</a></li>
+                        <li><a href="#">Rimborsi</a></li>
+                        <li><a href="#">Abbonamenti</a></li>
+                        <li><a href="#">Servizi in stazione</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Seguici</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Ferrovie dello Stato Italiane. Tutti i diritti riservati.</p>
+            </div>
+        </footer>
 
-            // Aggiorna il contatore totale
-            totalCardsEl.textContent = totalCards;
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Aggiungi questo all'inizio del tuo JavaScript esistente
+                // Array delle stazioni disponibili
+                const stations = [
+                    // Stazioni Principali Alta Velocità
+                    "Torino Porta Nuova",
+                    "Torino Porta Susa",
+                    "Milano Centrale",
+                    "Milano Porta Garibaldi",
+                    "Milano Rogoredo",
+                    "Bologna Centrale AV",
+                    "Firenze Santa Maria Novella",
+                    "Firenze Campo di Marte",
+                    "Roma Termini",
+                    "Roma Tiburtina",
+                    "Roma Ostiense",
+                    "Napoli Centrale",
+                    "Napoli Afragola",
+                    "Salerno",
+                    "Reggio Emilia AV Mediopadana",
 
-            // Crea le card e gli indicatori
-            function setupCarousel() {
-                // Crea le card
-                trainCards.forEach((card, index) => {
-                    const cardElement = createCardElement(card, index);
-                    carousel.appendChild(cardElement);
-                });
+                    // Lombardia
+                    "Bergamo",
+                    "Brescia",
+                    "Como San Giovanni",
+                    "Cremona",
+                    "Lecco",
+                    "Lodi",
+                    "Mantova",
+                    "Monza",
+                    "Pavia",
+                    "Sondrio",
+                    "Varese",
+                    "Busto Arsizio",
+                    "Gallarate",
+                    "Treviglio",
+                    "Voghera",
+                    "Seregno",
+                    "Carnate",
+                    "Pioltello Limito",
+                    "Rho Fiera Milano",
 
-                // Crea gli indicatori
-                trainCards.forEach((_, index) => {
-                    const indicator = document.createElement('div');
-                    indicator.classList.add('carousel-indicator');
-                    if (index === 0) indicator.classList.add('active');
+                    // Veneto
+                    "Venezia Santa Lucia",
+                    "Venezia Mestre",
+                    "Padova",
+                    "Verona Porta Nuova",
+                    "Vicenza",
+                    "Treviso Centrale",
+                    "Belluno",
+                    "Rovigo",
+                    "Conegliano",
+                    "Castelfranco Veneto",
+                    "Bassano del Grappa",
+                    "Portogruaro",
+                    "Chioggia",
+                    "San Donà di Piave",
 
-                    indicator.addEventListener('click', () => {
-                        goToCard(index);
+                    // Piemonte
+                    "Alessandria",
+                    "Asti",
+                    "Biella San Paolo",
+                    "Cuneo",
+                    "Novara",
+                    "Vercelli",
+                    "Alba",
+                    "Fossano",
+                    "Pinerolo",
+                    "Savigliano",
+                    "Verbania-Pallanza",
+                    "Domodossola",
+                    "Novi Ligure",
+                    "Acqui Terme",
+                    "Casale Monferrato",
+
+                    // Liguria
+                    "Genova Piazza Principe",
+                    "Genova Brignole",
+                    "La Spezia Centrale",
+                    "Savona",
+                    "Ventimiglia",
+                    "Sanremo",
+                    "Chiavari",
+                    "Rapallo",
+                    "Sestri Levante",
+                    "Albenga",
+                    "Imperia",
+                    "Lavagna",
+                    "Santa Margherita Ligure",
+
+                    // Emilia-Romagna
+                    "Parma",
+                    "Modena",
+                    "Reggio Emilia",
+                    "Piacenza",
+                    "Ferrara",
+                    "Ravenna",
+                    "Rimini",
+                    "Forlì",
+                    "Cesena",
+                    "Faenza",
+                    "Fidenza",
+                    "Imola",
+                    "Carpi",
+                    "Riccione",
+                    "Cattolica",
+
+                    // Toscana
+                    "Pisa Centrale",
+                    "Livorno Centrale",
+                    "Siena",
+                    "Lucca",
+                    "Pistoia",
+                    "Prato Centrale",
+                    "Arezzo",
+                    "Grosseto",
+                    "Viareggio",
+                    "Empoli",
+                    "Carrara Avenza",
+                    "Massa Centro",
+                    "Montecatini Terme",
+                    "Pontedera",
+                    "Chiusi-Chianciano Terme",
+
+                    // Lazio
+                    "Civitavecchia",
+                    "Frosinone",
+                    "Latina",
+                    "Viterbo Porta Romana",
+                    "Orte",
+                    "Cassino",
+                    "Ciampino",
+                    "Fiumicino Aeroporto",
+                    "Formia",
+                    "Nettuno",
+                    "Anzio",
+                    "Tivoli",
+                    "Frascati",
+                    "Velletri",
+
+                    // Campania
+                    "Napoli San Giovanni-Barra",
+                    "Caserta",
+                    "Benevento",
+                    "Aversa",
+                    "Napoli Campi Flegrei",
+                    "Torre Annunziata Centrale",
+                    "Nocera Inferiore",
+                    "Pompei",
+                    "Ercolano Scavi",
+                    "Cava de' Tirreni",
+                    "Battipaglia",
+                    "Sapri",
+                    "Agropoli",
+                    "Vallo della Lucania",
+
+                    // Puglia
+                    "Bari Centrale",
+                    "Foggia",
+                    "Lecce",
+                    "Brindisi",
+                    "Taranto",
+                    "Barletta",
+                    "Andria",
+                    "Trani",
+                    "Monopoli",
+                    "Ostuni",
+                    "Gioia del Colle",
+                    "San Severo",
+                    "Fasano",
+                    "Polignano a Mare",
+
+                    // Calabria
+                    "Reggio Calabria Centrale",
+                    "Lamezia Terme Centrale",
+                    "Cosenza",
+                    "Villa San Giovanni",
+                    "Paola",
+                    "Sibari",
+                    "Crotone",
+                    "Vibo Valentia",
+                    "Gioia Tauro",
+                    "Rosarno",
+                    "Scalea",
+                    "Tropea",
+                    "Locri",
+
+                    // Sicilia
+                    "Palermo Centrale",
+                    "Catania Centrale",
+                    "Messina Centrale",
+                    "Siracusa",
+                    "Agrigento Centrale",
+                    "Trapani",
+                    "Taormina-Giardini",
+                    "Cefalù",
+                    "Milazzo",
+                    "Acireale",
+                    "Ragusa",
+                    "Gela",
+                    "Marsala",
+                    "Barcellona-Castroreale",
+
+                    // Sardegna
+                    "Cagliari",
+                    "Sassari",
+                    "Olbia",
+                    "Oristano",
+                    "Carbonia",
+                    "Iglesias",
+                    "Porto Torres",
+                    "Macomer",
+                    "Nuoro",
+                    "Golfo Aranci",
+
+                    // Marche
+                    "Ancona",
+                    "Pesaro",
+                    "Ascoli Piceno",
+                    "Macerata",
+                    "Fano",
+                    "San Benedetto del Tronto",
+                    "Civitanova Marche",
+                    "Jesi",
+                    "Falconara Marittima",
+                    "Senigallia",
+
+                    // Umbria
+                    "Perugia",
+                    "Terni",
+                    "Foligno",
+                    "Assisi",
+                    "Spoleto",
+                    "Pescara",
+                    "Foggia",
+                    "Bari Centrale",
+                    "Brindisi",
+                    "Lecce",
+                    "Genova P. Principe",
+                    "La Spezia",
+                    "Pisa Centrale",
+                    "Livorno",
+                    "Grosseto",
+                    "Civitavecchia",
+                    "Novara",
+                    "Asti",
+                    "Alessandria",
+                    "Novi Ligure",
+                    "Gallarate",
+                    "Arona",
+                    "Stresa",
+                    "Domodossola",
+                    "Latina",
+                    "Formia",
+                    "Aversa",
+                    "Gioia del Colle",
+                    "Taranto",
+                    "Napoli Porta Nolana",
+                    "Ercolano Scavi",
+                    "Pompei Scavi",
+                    "Castellammare di Stabia",
+                    "Sorrento",
+                    "Tirano",
+                    "Poschiavo",
+                    "Ospizio Bernina",
+                    "St. Moritz",
+                    "Sulmona",
+                    "Campo di Giove",
+                    "Roccaraso",
+                    "Castel di Sangro",
+                    "Isernia"
+                ];
+
+                // Funzione per l'autocompletamento
+                function setupAutocomplete(inputId, listId) {
+                    const input = document.getElementById(inputId);
+                    const list = document.getElementById(listId);
+
+                    // Nascondi inizialmente la lista
+                    list.style.display = 'none';
+
+                    input.addEventListener('input', function () {
+                        const value = this.value.toLowerCase();
+                        list.innerHTML = '';
+                        list.style.display = 'none';
+
+                        if (value.length < 2) return;
+
+                        const matches = stations.filter(station =>
+                            station.toLowerCase().includes(value)
+                        );
+
+                        if (matches.length > 0) {
+                            list.style.display = 'block';
+                            matches.forEach(station => {
+                                const div = document.createElement('div');
+                                div.textContent = station;
+                                div.className = 'autocomplete-item';
+                                div.addEventListener('click', function () {
+                                    input.value = station;
+                                    list.style.display = 'none';
+                                });
+                                list.appendChild(div);
+                            });
+                        }
                     });
 
-                    indicators.appendChild(indicator);
-                });
+                    // Gestione del focus
+                    input.addEventListener('focus', function () {
+                        if (this.value.length >= 2) {
+                            list.style.display = 'block';
+                        }
+                    });
 
-                // Imposta la larghezza del carousel track
-                carousel.style.width = `${totalCards * 100}%`;
+                    // Nascondi la lista quando si clicca fuori
+                    document.addEventListener('click', function (e) {
+                        if (!input.contains(e.target) && !list.contains(e.target)) {
+                            list.style.display = 'none';
+                        }
+                    });
 
-                // Mostra la prima card
-                updateCarousel();
-            }
+                    // Previeni la chiusura quando si clicca sulla lista
+                    list.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                    });
 
-            // Crea un elemento card
-            function createCardElement(cardData, index) {
-                const card = document.createElement('div');
-                card.classList.add('train-card');
-                if (index === 0) card.classList.add('active');
+                    // Gestione della navigazione con tastiera
+                    input.addEventListener('keydown', function (e) {
+                        const items = list.getElementsByClassName('autocomplete-item');
+                        let currentFocus = -1;
 
-                card.innerHTML = `
+                        // Trova l'elemento attualmente selezionato
+                        for (let i = 0; i < items.length; i++) {
+                            if (items[i].classList.contains('selected')) {
+                                currentFocus = i;
+                                break;
+                            }
+                        }
+
+                        if (e.key === 'ArrowDown') {
+                            e.preventDefault();
+                            currentFocus = Math.min(currentFocus + 1, items.length - 1);
+                            updateSelection(items, currentFocus);
+                        } else if (e.key === 'ArrowUp') {
+                            e.preventDefault();
+                            currentFocus = Math.max(currentFocus - 1, 0);
+                            updateSelection(items, currentFocus);
+                        } else if (e.key === 'Enter' && currentFocus > -1) {
+                            e.preventDefault();
+                            if (items[currentFocus]) {
+                                input.value = items[currentFocus].textContent;
+                                list.style.display = 'none';
+                            }
+                        } else if (e.key === 'Escape') {
+                            list.style.display = 'none';
+                        }
+                    });
+                }
+
+                // Funzione di supporto per aggiornare la selezione
+                function updateSelection(items, currentFocus) {
+                    Array.from(items).forEach((item, index) => {
+                        if (index === currentFocus) {
+                            item.classList.add('selected');
+                            item.scrollIntoView({ block: 'nearest' });
+                        } else {
+                            item.classList.remove('selected');
+                        }
+                    });
+                }
+
+                // Inizializza l'autocompletamento per entrambi i campi
+                setupAutocomplete('departure', 'departure-list');
+                setupAutocomplete('destination', 'destination-list');
+
+                // Dati dei treni
+                const trainCards = [
+                    {
+                        image: 'https://www.thetrainline.com/cmsmedia/cms/9533/trenitalia_hero_2x.jpg',
+                        title: 'Frecciarossa 1000',
+                        description: 'Ammiraglia dell\'Alta Velocità italiana, raggiunge i 360 km/h con interni di design e 4 livelli di servizio. Connessione Wi-Fi gratuita e sistema di intrattenimento a bordo.',
+                        details: {
+                            speed: '360 km/h',
+                            comfort: 'Executive',
+                            route: 'TO-MI-RM-NA'
+                        }
+                    },
+                    {
+                        image: 'https://cdn3.trainspictures.com/pictures/45/06/1920.jpg',
+                        title: 'Frecciargento',
+                        description: 'Treno ad assetto variabile che si adatta perfettamente sia alle linee AV che a quelle tradizionali. Ideale per collegamenti verso città non servite da linee dedicate all\'Alta Velocità.',
+                        details: {
+                            speed: '250 km/h',
+                            comfort: 'Business',
+                            route: 'RM-VE'
+                        }
+                    },
+                    {
+                        image: 'https://www.ilportaledeitreni.it/wp-content/uploads/2017/07/SAM_2915-1.jpg',
+                        title: 'Frecciabianca',
+                        description: 'Collega le principali città italiane su linee convenzionali con elevati standard di comfort. Perfetto equilibrio tra velocità e capillarità del servizio.',
+                        details: {
+                            speed: '200 km/h',
+                            comfort: 'Standard Plus',
+                            route: 'MI-GE-RM'
+                        }
+                    },
+                    {
+                        image: 'https://travelwonderer.it/wp-content/uploads/2020/10/Italia-Lazio-Roma-treno-Termini-Italo-1.jpg',
+                        title: 'Italo AGV',
+                        description: 'Primo treno ad Alta Velocità completamente interoperabile in Europa, unisce tecnologia francese e design italiano. Silenzioso, ecologico e con ambienti eleganti.',
+                        details: {
+                            speed: '300 km/h',
+                            comfort: 'Club',
+                            route: 'MI-RM-NA'
+                        }
+                    },
+                    {
+                        image: 'https://live.staticflickr.com/4906/45425213395_562c91e69a_b.jpg',
+                        title: 'Italo EVO',
+                        description: 'Evoluzione della flotta Italo con maggiore efficienza energetica e ridotto impatto ambientale. Dotato di sistema di illuminazione LED e materiali riciclabili al 98%.',
+                        details: {
+                            speed: '300 km/h',
+                            comfort: 'Prima',
+                            route: 'TO-MI-VE'
+                        }
+                    },
+                    {
+                        image: 'https://www.rainews.it/dl/img/2022/05/1600x1200_1653212302328.Stazione_di_Romagnano_Vietri_Salvitelle___treno_Intercity___locomotiva_E.401.036.jpg',
+                        title: 'Intercity',
+                        description: 'Servizio di media-lunga percorrenza che garantisce collegamenti tra centri urbani di medie e grandi dimensioni. Carrozze rinnovate con prese elettriche e spazi per biciclette.',
+                        details: {
+                            speed: '200 km/h',
+                            comfort: 'Standard',
+                            route: 'BO-BA'
+                        }
+                    },
+                    {
+                        image: 'https://www.ilportaledeitreni.it/wp-content/uploads/2025/01/IC-NOTTE-61-8329-90-833-8-I-TI.jpg',
+                        title: 'Intercity Notte',
+                        description: 'Viaggia mentre dormi attraversando l\'Italia da nord a sud. Scompartimenti con cuccette e vagoni letto per un riposo confortevole durante il viaggio notturno.',
+                        details: {
+                            speed: '160 km/h',
+                            comfort: 'Cuccette',
+                            route: 'MI-PA'
+                        }
+                    },
+                    {
+                        image: 'https://www.primocanale.it/materialiarchivio/immagininews/20151013192404-treni_vivalto.jpg',
+                        title: 'Regionale Veloce',
+                        description: 'Servizio potenziato con fermate ridotte per collegamenti rapidi tra centri regionali importanti. Ideale per pendolari che necessitano di spostamenti veloci.',
+                        details: {
+                            speed: '160 km/h',
+                            comfort: 'Standard',
+                            route: 'FI-PI'
+                        }
+                    },
+                    {
+                        image: 'https://www.cittadellaspezia.com/photogallery_new/images/2023/06/treno-in-liguria-432848.jpg',
+                        title: 'Rock',
+                        description: 'Treno regionale di ultima generazione a doppio piano con capacità fino a 1.400 passeggeri. Dotato di videosorveglianza, Wi-Fi e aree per biciclette e bagagli.',
+                        details: {
+                            speed: '160 km/h',
+                            comfort: 'Avanzato',
+                            route: 'Regionali'
+                        }
+                    },
+                    {
+                        image: 'https://www.ferrovie.it/portale/images/articoli/10300101.jpg',
+                        title: 'Pop',
+                        description: 'Convoglio mono piano ad alta sostenibilità ambientale, costruito con materiali riciclabili e consumi ridotti del 30%. Accessibilità totale per persone a mobilità ridotta.',
+                        details: {
+                            speed: '160 km/h',
+                            comfort: 'Moderno',
+                            route: 'Regionali'
+                        }
+                    },
+                    {
+                        image: 'https://www.triesteallnews.it/wp-content/images/2025/02/trieste@news-Arlecchino.jpg',
+                        title: 'Treni Storici',
+                        description: 'Autentici gioielli ferroviari restaurati che raccontano la storia delle ferrovie italiane. Viaggi emozionanti su convogli d\'epoca attraverso paesaggi mozzafiato.',
+                        details: {
+                            speed: '100 km/h',
+                            comfort: 'Vintage',
+                            route: 'Turistiche'
+                        }
+                    },
+                    {
+                        image: 'https://www.stagniweb.it/altro2/large7/tti_4835.jpg',
+                        title: 'Treni Turistici',
+                        description: 'Itinerari dedicati alla scoperta di borghi, parchi naturali e siti UNESCO. Esperienza di viaggio lenta e immersiva con carrozze panoramiche e guide a bordo.',
+                        details: {
+                            speed: '100 km/h',
+                            comfort: 'Vintage',
+                            route: 'Turistiche'
+                        }
+                    }
+                ];
+
+
+                // Configurazione del carousel
+                const carousel = document.getElementById('trainCarousel');
+                const indicators = document.getElementById('carouselIndicators');
+                const prevBtn = document.querySelector('.carousel-arrow.prev');
+                const nextBtn = document.querySelector('.carousel-arrow.next');
+                const currentCardEl = document.getElementById('currentCard');
+                const totalCardsEl = document.getElementById('totalCards');
+
+                let currentIndex = 0;
+                const totalCards = trainCards.length;
+
+                // Aggiorna il contatore totale
+                totalCardsEl.textContent = totalCards;
+
+                // Crea le card e gli indicatori
+                function setupCarousel() {
+                    // Crea le card
+                    trainCards.forEach((card, index) => {
+                        const cardElement = createCardElement(card, index);
+                        carousel.appendChild(cardElement);
+                    });
+
+                    // Crea gli indicatori
+                    trainCards.forEach((_, index) => {
+                        const indicator = document.createElement('div');
+                        indicator.classList.add('carousel-indicator');
+                        if (index === 0) indicator.classList.add('active');
+
+                        indicator.addEventListener('click', () => {
+                            goToCard(index);
+                        });
+
+                        indicators.appendChild(indicator);
+                    });
+
+                    // Imposta la larghezza del carousel track
+                    carousel.style.width = `${totalCards * 100}%`;
+
+                    // Mostra la prima card
+                    updateCarousel();
+                }
+
+                // Crea un elemento card
+                function createCardElement(cardData, index) {
+                    const card = document.createElement('div');
+                    card.classList.add('train-card');
+                    if (index === 0) card.classList.add('active');
+
+                    card.innerHTML = `
                     <img src="${cardData.image}" alt="${cardData.title}">
                     <div class="train-card-content">
                         <h3>${cardData.title}</h3>
@@ -709,65 +1129,65 @@
                     </div>
                 `;
 
-                // Aggiungi evento click per aprire il modal
-                card.addEventListener('click', () => {
-                    openModal(cardData);
-                });
+                    // Aggiungi evento click per aprire il modal
+                    card.addEventListener('click', () => {
+                        openModal(cardData);
+                    });
 
-                return card;
-            }
+                    return card;
+                }
 
-            // Aggiorna la visualizzazione del carousel
-            function updateCarousel() {
-                // Aggiorna la posizione del carousel
-                carousel.style.transform = `translateX(-${currentIndex * (100 / totalCards)}%)`;
+                // Aggiorna la visualizzazione del carousel
+                function updateCarousel() {
+                    // Aggiorna la posizione del carousel
+                    carousel.style.transform = `translateX(-${currentIndex * (100 / totalCards)}%)`;
 
-                // Aggiorna gli indicatori
-                document.querySelectorAll('.carousel-indicator').forEach((indicator, index) => {
-                    if (index === currentIndex) {
-                        indicator.classList.add('active');
-                    } else {
-                        indicator.classList.remove('active');
-                    }
-                });
+                    // Aggiorna gli indicatori
+                    document.querySelectorAll('.carousel-indicator').forEach((indicator, index) => {
+                        if (index === currentIndex) {
+                            indicator.classList.add('active');
+                        } else {
+                            indicator.classList.remove('active');
+                        }
+                    });
 
-                // Aggiorna il contatore
-                currentCardEl.textContent = currentIndex + 1;
+                    // Aggiorna il contatore
+                    currentCardEl.textContent = currentIndex + 1;
 
-                // Aggiorna la classe active per l'animazione
-                document.querySelectorAll('.train-card').forEach((card, index) => {
-                    if (index === currentIndex) {
-                        card.classList.add('active');
-                    } else {
-                        card.classList.remove('active');
-                    }
-                });
-            }
+                    // Aggiorna la classe active per l'animazione
+                    document.querySelectorAll('.train-card').forEach((card, index) => {
+                        if (index === currentIndex) {
+                            card.classList.add('active');
+                        } else {
+                            card.classList.remove('active');
+                        }
+                    });
+                }
 
-            // Vai alla card precedente
-            function prevCard() {
-                currentIndex = (currentIndex - 1 + totalCards) % totalCards;
-                updateCarousel();
-            }
+                // Vai alla card precedente
+                function prevCard() {
+                    currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+                    updateCarousel();
+                }
 
-            // Vai alla card successiva
-            function nextCard() {
-                currentIndex = (currentIndex + 1) % totalCards;
-                updateCarousel();
-            }
+                // Vai alla card successiva
+                function nextCard() {
+                    currentIndex = (currentIndex + 1) % totalCards;
+                    updateCarousel();
+                }
 
-            // Vai a una card specifica
-            function goToCard(index) {
-                currentIndex = index;
-                updateCarousel();
-            }
+                // Vai a una card specifica
+                function goToCard(index) {
+                    currentIndex = index;
+                    updateCarousel();
+                }
 
-            // Apri il modal con i dettagli della card
-            function openModal(cardData) {
-                const modal = document.createElement('div');
-                modal.classList.add('modal');
+                // Apri il modal con i dettagli della card
+                function openModal(cardData) {
+                    const modal = document.createElement('div');
+                    modal.classList.add('modal');
 
-                modal.innerHTML = `
+                    modal.innerHTML = `
                     <div class="modal-content">
                         <span class="close-button">&times;</span>
                         <img src="${cardData.image}" alt="${cardData.title}" class="modal-image">
@@ -781,97 +1201,287 @@
                     </div>
                 `;
 
-                document.body.appendChild(modal);
+                    document.body.appendChild(modal);
 
-                // Mostra il modal con animazione
-                setTimeout(() => {
-                    modal.classList.add('show');
-                }, 10);
-
-                // Gestisci la chiusura del modal
-                const closeBtn = modal.querySelector('.close-button');
-                closeBtn.addEventListener('click', () => {
-                    modal.classList.remove('show');
+                    // Mostra il modal con animazione
                     setTimeout(() => {
-                        document.body.removeChild(modal);
-                    }, 300);
-                });
+                        modal.classList.add('show');
+                    }, 10);
 
-                // Chiudi il modal cliccando fuori dal contenuto
-                modal.addEventListener('click', (e) => {
-                    if (e.target === modal) {
+                    // Gestisci la chiusura del modal
+                    const closeBtn = modal.querySelector('.close-button');
+                    closeBtn.addEventListener('click', () => {
                         modal.classList.remove('show');
                         setTimeout(() => {
                             document.body.removeChild(modal);
                         }, 300);
+                    });
+
+                    // Chiudi il modal cliccando fuori dal contenuto
+                    modal.addEventListener('click', (e) => {
+                        if (e.target === modal) {
+                            modal.classList.remove('show');
+                            setTimeout(() => {
+                                document.body.removeChild(modal);
+                            }, 300);
+                        }
+                    });
+                }
+
+                // Event listeners
+                prevBtn.addEventListener('click', prevCard);
+                nextBtn.addEventListener('click', nextCard);
+
+                // Gestisci la navigazione con tastiera
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') {
+                        prevCard();
+                    } else if (e.key === 'ArrowRight') {
+                        nextCard();
                     }
                 });
-            }
 
-            // Event listeners
-            prevBtn.addEventListener('click', prevCard);
-            nextBtn.addEventListener('click', nextCard);
+                // Inizializza il carousel
+                setupCarousel();
 
-            // Gestisci la navigazione con tastiera
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') {
-                    prevCard();
-                } else if (e.key === 'ArrowRight') {
-                    nextCard();
+                // Header scroll effect
+                window.addEventListener('scroll', function () {
+                    const header = document.querySelector('header');
+                    if (window.scrollY > 100) {
+                        header.classList.add('header-scrolled');
+                    } else {
+                        header.classList.remove('header-scrolled');
+                    }
+                });
+
+                // Date Picker Implementation
+                class DatePicker {
+                    constructor(element) {
+                        this.element = element;
+                        this.input = element.querySelector('input');
+                        this.dropdown = element.querySelector('.date-picker-dropdown');
+                        this.currentDate = new Date();
+                        this.selectedDate = null;
+
+                        this.init();
+                    }
+
+                    init() {
+                        // Toggle calendar on input click
+                        this.input.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            this.toggleCalendar();
+                        });
+
+                        // Close calendar when clicking outside
+                        document.addEventListener('click', (e) => {
+                            if (!this.element.contains(e.target)) {
+                                this.hideCalendar();
+                            }
+                        });
+
+                        // Prevent closing when clicking inside dropdown
+                        this.dropdown.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                        });
+
+                        // Month navigation
+                        const prevMonthBtn = this.element.querySelector('.prev-month');
+                        const nextMonthBtn = this.element.querySelector('.next-month');
+
+                        if (prevMonthBtn) {
+                            prevMonthBtn.addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                this.previousMonth();
+                            });
+                        }
+
+                        if (nextMonthBtn) {
+                            nextMonthBtn.addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                this.nextMonth();
+                            });
+                        }
+
+                        // Footer buttons
+                        const todayBtn = this.element.querySelector('.today-btn');
+                        const clearBtn = this.element.querySelector('.clear-btn');
+
+                        if (todayBtn) {
+                            todayBtn.addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                this.selectToday();
+                            });
+                        }
+
+                        if (clearBtn) {
+                            clearBtn.addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                this.clearSelection();
+                            });
+                        }
+
+                        // Initial render
+                        this.renderCalendar();
+                    }
+
+                    toggleCalendar() {
+                        const wasActive = this.element.classList.contains('active');
+                        // Close all other open date pickers
+                        document.querySelectorAll('.custom-date-picker.active').forEach(picker => {
+                            picker.classList.remove('active');
+                        });
+                        // Toggle this one
+                        this.element.classList.toggle('active', !wasActive);
+                    }
+
+                    hideCalendar() {
+                        this.element.classList.remove('active');
+                    }
+
+                    renderCalendar() {
+                        const year = this.currentDate.getFullYear();
+                        const month = this.currentDate.getMonth();
+
+                        // Update header
+                        const monthNames = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno',
+                            'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
+                        const headerEl = this.element.querySelector('.current-month');
+                        if (headerEl) {
+                            headerEl.textContent = `${monthNames[month]} ${year}`;
+                        }
+
+                        // Get first day of month and total days
+                        const firstDay = new Date(year, month, 1).getDay();
+                        const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+                        // Create days HTML
+                        const daysContainer = this.element.querySelector('.days');
+                        if (!daysContainer) return;
+
+                        daysContainer.innerHTML = '';
+
+                        // Add empty cells for days before start of month
+                        for (let i = 0; i < firstDay; i++) {
+                            const emptyDay = document.createElement('button');
+                            emptyDay.disabled = true;
+                            daysContainer.appendChild(emptyDay);
+                        }
+
+                        // Add days of month
+                        const today = new Date();
+                        for (let day = 1; day <= daysInMonth; day++) {
+                            const button = document.createElement('button');
+                            button.type = 'button'; // Prevent form submission
+                            button.textContent = day;
+
+                            // Check if this day is today
+                            if (year === today.getFullYear() &&
+                                month === today.getMonth() &&
+                                day === today.getDate()) {
+                                button.classList.add('today');
+                            }
+
+                            // Check if this day is selected
+                            if (this.selectedDate &&
+                                year === this.selectedDate.getFullYear() &&
+                                month === this.selectedDate.getMonth() &&
+                                day === this.selectedDate.getDate()) {
+                                button.classList.add('selected');
+                            }
+
+                            // Add click handler
+                            button.addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                this.selectDate(new Date(year, month, day));
+                            });
+                            daysContainer.appendChild(button);
+                        }
+                    }
+
+                    previousMonth() {
+                        this.currentDate.setMonth(this.currentDate.getMonth() - 1);
+                        this.renderCalendar();
+                    }
+
+                    nextMonth() {
+                        this.currentDate.setMonth(this.currentDate.getMonth() + 1);
+                        this.renderCalendar();
+                    }
+
+                    selectDate(date) {
+                        this.selectedDate = date;
+                        const formattedDate = this.formatDate(date);
+                        this.input.value = formattedDate;
+                        this.renderCalendar();
+                        setTimeout(() => this.hideCalendar(), 200); // Piccolo delay per vedere la selezione
+                    }
+
+                    selectToday() {
+                        const today = new Date();
+                        this.currentDate = new Date(today);
+                        this.selectDate(today);
+                    }
+
+                    clearSelection() {
+                        this.selectedDate = null;
+                        this.input.value = '';
+                        this.renderCalendar();
+                        this.hideCalendar();
+                    }
+
+                    formatDate(date) {
+                        const day = String(date.getDate()).padStart(2, '0');
+                        const month = String(date.getMonth() + 1).padStart(2, '0');
+                        const year = date.getFullYear();
+                        return `${day}/${month}/${year}`;
+                    }
+                }
+
+                // Initialize date picker
+                const datePickerElement = document.querySelector('.custom-date-picker');
+                if (datePickerElement) {
+                    new DatePicker(datePickerElement);
                 }
             });
 
-            // Inizializza il carousel
-            setupCarousel();
+            // Mobile Navigation Toggle
+            const mobileNavToggle = document.getElementById('mobileNavToggle');
+            const mobileNav = document.querySelector('.mobile-nav');
 
-            // Header scroll effect
-            window.addEventListener('scroll', function () {
-                const header = document.querySelector('header');
-                if (window.scrollY > 100) {
-                    header.classList.add('header-scrolled');
+            mobileNavToggle.addEventListener('click', function () {
+                mobileNav.classList.toggle('expanded');
+
+                // Cambia l'icona del pulsante
+                const icon = mobileNavToggle.querySelector('i');
+                if (mobileNav.classList.contains('expanded')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
                 } else {
-                    header.classList.remove('header-scrolled');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
                 }
             });
-        });
 
-        // Mobile Navigation Toggle
-const mobileNavToggle = document.getElementById('mobileNavToggle');
-const mobileNav = document.querySelector('.mobile-nav');
+            // Chiudi il menu quando si clicca su un link
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    // Imposta questo link come attivo
+                    mobileNavLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
 
-mobileNavToggle.addEventListener('click', function() {
-    mobileNav.classList.toggle('expanded');
-    
-    // Cambia l'icona del pulsante
-    const icon = mobileNavToggle.querySelector('i');
-    if (mobileNav.classList.contains('expanded')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-    } else {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-    }
-});
+                    // Se lo schermo è piccolo, chiudi il menu
+                    if (window.innerWidth <= 768) {
+                        mobileNav.classList.remove('expanded');
+                        const icon = mobileNavToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
 
-// Chiudi il menu quando si clicca su un link
-const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
-mobileNavLinks.forEach(link => {
-    link.addEventListener('click', function() {
-        // Imposta questo link come attivo
-        mobileNavLinks.forEach(l => l.classList.remove('active'));
-        this.classList.add('active');
-        
-        // Se lo schermo è piccolo, chiudi il menu
-        if (window.innerWidth <= 768) {
-            mobileNav.classList.remove('expanded');
-            const icon = mobileNavToggle.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-        }
-    });
-});
-
-    </script>
-</body>
+        </script>
+    </body>
 
 </html>
