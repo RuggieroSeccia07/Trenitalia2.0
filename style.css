@@ -1647,6 +1647,84 @@ footer {
     color: var(--primary-color);
 }
 
+/* Time Input Styles */
+.time-group {
+    flex: 1 1 300px;
+    max-width: 400px;
+}
+
+.time-input-wrapper {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.time-input {
+    flex: 1;
+    padding: 12px 15px;
+    background: var(--primary-color);
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.time-input:hover {
+    border-color: var(--accent-color);
+}
+
+.time-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.1);
+}
+
+.time-input::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+.depart-now-btn {
+    padding: 12px 20px;
+    background: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Poppins', sans-serif;
+    white-space: nowrap;
+}
+
+.depart-now-btn:hover {
+    background: #ffdd33;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 204, 0, 0.3);
+}
+
+.depart-now-btn:active {
+    transform: translateY(0);
+}
+
+.depart-now-btn.active {
+    background: #27ae60;
+    color: white;
+    animation: pulse 0.5s ease;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
 /* Custom Date Picker Styles */
 .custom-date-picker {
     position: relative;

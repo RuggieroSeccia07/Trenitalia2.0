@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risultati Ricerca - Ferrovie Italiane</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="results.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar Mobile -->
+    <nav class="mobile-nav">
+        <button class="mobile-nav-toggle" id="mobileNavToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul>
+            <li><a href="index.html#home"><i class="fas fa-home"></i><span>Home</span></a></li>
+            <li><a href="index.html#acquista"><i class="fas fa-ticket-alt"></i><span>Biglietti</span></a></li>
+            <li><a href="index.html#treni"><i class="fas fa-train"></i><span>Treni</span></a></li>
+            <li><a href="index.html#tratte"><i class="fas fa-route"></i><span>Tratte</span></a></li>
+            <li><a href="index.html#news"><i class="fas fa-newspaper"></i><span>News</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="results-container">
+        <div class="results-header">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i> Torna alla ricerca
+            </a>
+            <h1>Risultati della ricerca</h1>
+            <div class="search-info" id="searchInfo">
+                <!-- Informazioni sulla ricerca verranno inserite qui -->
+            </div>
+        </div>
+
+        <div class="loading-spinner" id="loadingSpinner">
+            <div class="spinner"></div>
+            <p>Ricerca in corso...</p>
+        </div>
+
+        <div class="error-message" id="errorMessage" style="display: none;">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p id="errorText"></p>
+        </div>
+
+        <div class="results-content" id="resultsContent" style="display: none;">
+            <div class="results-summary">
+                <p id="resultsCount"></p>
+            </div>
+            
+            <!-- Statistiche della tratta -->
+            <div class="route-statistics" id="routeStatistics" style="display: none;">
+                <h3><i class="fas fa-chart-line"></i> Statistiche della Tratta</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-route"></i></div>
+                        <div class="stat-value" id="statDistance">--</div>
+                        <div class="stat-label">Distanza</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                        <div class="stat-value" id="statPopularity">--</div>
+                        <div class="stat-label">Passeggeri/mese</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                        <div class="stat-value" id="statPunctuality">--</div>
+                        <div class="stat-label">Puntualità</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-train"></i></div>
+                        <div class="stat-value" id="statTrains">--</div>
+                        <div class="stat-label">Treni/giorno</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="filters-section">
+                <div class="filter-group">
+                    <label><i class="fas fa-filter"></i> Filtra per:</label>
+                    <select id="filterType" class="filter-select">
+                        <option value="all">Tutti i treni</option>
+                        <option value="Frecciarossa">Frecciarossa</option>
+                        <option value="Frecciargento">Frecciargento</option>
+                        <option value="Frecciabianca">Frecciabianca</option>
+                        <option value="Intercity">Intercity</option>
+                        <option value="Regionale Veloce">Regionale Veloce</option>
+                        <option value="Regionale">Regionale</option>
+                    </select>
+                    <select id="sortBy" class="filter-select">
+                        <option value="time">Orario partenza</option>
+                        <option value="price">Prezzo</option>
+                        <option value="duration">Durata</option>
+                        <option value="arrival">Orario arrivo</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Carrello -->
+            <div class="cart-section" id="cartSection" style="display: none;">
+                <div class="cart-header">
+                    <h3><i class="fas fa-shopping-cart"></i> Carrello (<span id="cartCount">0</span>)</h3>
+                    <button class="clear-cart-btn" id="clearCartBtn">
+                        <i class="fas fa-trash"></i> Svuota
+                    </button>
+                </div>
+                <div class="cart-items" id="cartItems">
+                    <!-- Gli elementi del carrello verranno inseriti qui -->
+                </div>
+                <div class="cart-footer">
+                    <div class="cart-total">
+                        <strong>Totale: €<span id="cartTotal">0.00</span></strong>
+                    </div>
+                    <div class="cart-actions">
+                        <button class="export-btn" id="exportBtn">
+                            <i class="fas fa-download"></i> Esporta
+                        </button>
+                        <button class="print-btn" id="printBtn">
+                            <i class="fas fa-print"></i> Stampa
+                        </button>
+                        <button class="checkout-btn" id="checkoutBtn">
+                            <i class="fas fa-credit-card"></i> Procedi al pagamento
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="trains-list" id="trainsList">
+                <!-- I risultati verranno inseriti qui dinamicamente -->
+            </div>
+        </div>
+    </div>
+
+    <script src="api.js"></script>
+    <script>
+        // Verifica che l'API sia caricata
+        if (typeof searchTrenitaliaAPI === 'undefined') {
+            console.error('ERRORE: api.js non è stato caricato correttamente!');
+        }
+    </script>
+    <script>
+        // Mobile Navigation Toggle
+        const mobileNavToggle = document.getElementById('mobileNavToggle');
+        const mobileNav = document.querySelector('.mobile-nav');
+
+        if (mobileNavToggle) {
+            mobileNavToggle.addEventListener('click', function () {
+                mobileNav.classList.toggle('expanded');
+
+                const icon = mobileNavToggle.querySelector('i');
+                if (mobileNav.classList.contains('expanded')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
+
+        // Chiudi il menu quando si clicca su un link
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                mobileNavLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+
+                if (window.innerWidth <= 768) {
+                    mobileNav.classList.remove('expanded');
+                    const icon = mobileNavToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+
+        // Carica i risultati quando la pagina è pronta
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inizializza gli event listeners del carrello
+            setupCartEventListeners();
+            
+            const searchParams = sessionStorage.getItem('searchParams');
+            
+            if (!searchParams) {
+                // Se non ci sono parametri, reindirizza alla home
+                window.location.href = 'index.html';
+                return;
+            }
+
+            const params = JSON.parse(searchParams);
+            
+            // Mostra le informazioni della ricerca
+            const searchInfo = document.getElementById('searchInfo');
+            if (searchInfo) {
+                searchInfo.innerHTML = `
+                    <div class="search-details">
+                        <span><i class="fas fa-map-marker-alt"></i> ${params.departure}</span>
+                        <i class="fas fa-arrow-right"></i>
+                        <span><i class="fas fa-map-marker-alt"></i> ${params.destination}</span>
+                        <span class="search-date"><i class="fas fa-calendar-alt"></i> ${params.date}</span>
+                    </div>
+                `;
+            }
+
+            // Cerca i treni
+            searchTrains(params.departure, params.destination, params.date, params.time);
+        });
+
+        async function searchTrains(departure, destination, date, preferredTime = null) {
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const errorMessage = document.getElementById('errorMessage');
+            const errorText = document.getElementById('errorText');
+            const resultsContent = document.getElementById('resultsContent');
+            const trainsList = document.getElementById('trainsList');
+            const resultsCount = document.getElementById('resultsCount');
+
+            try {
+                loadingSpinner.style.display = 'flex';
+                errorMessage.style.display = 'none';
+                resultsContent.style.display = 'none';
+
+                // Verifica che l'API sia disponibile
+                if (typeof searchTrenitaliaAPI === 'undefined') {
+                    console.error('API non disponibile, attendo il caricamento...');
+                    // Attendi un po' per vedere se l'API si carica
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                    if (typeof searchTrenitaliaAPI === 'undefined') {
+                        throw new Error('API non disponibile. Verifica che il file api.js sia caricato correttamente.');
+                    }
+                }
+
+                console.log('Chiamata API con parametri:', { departure, destination, date, preferredTime });
+
+                // Chiama l'API di Trenitalia con timeout
+                const trains = await Promise.race([
+                    searchTrenitaliaAPI(departure, destination, date, preferredTime),
+                    new Promise((_, reject) => 
+                        setTimeout(() => reject(new Error('Timeout: la ricerca sta impiegando troppo tempo')), 15000)
+                    )
+                ]);
+                
+                console.log('Treni ricevuti:', trains?.length || 0);
+
+                loadingSpinner.style.display = 'none';
+
+                if (!trains || trains.length === 0) {
+                    errorMessage.style.display = 'flex';
+                    errorText.textContent = 'Nessun treno trovato per questa tratta. Prova a modificare la data o le stazioni.';
+                    return;
+                }
+
+                // Mostra i risultati
+                resultsCount.textContent = `Trovati ${trains.length} treno${trains.length !== 1 ? 'i' : ''} disponibili`;
+                
+                // Mostra statistiche della tratta
+                try {
+                    if (typeof getRouteStatistics === 'function') {
+                        const stats = getRouteStatistics(departure, destination);
+                        displayRouteStatistics(stats, trains.length);
+                    } else {
+                        // Fallback: calcola statistiche base
+                        const depStation = findStation ? findStation(departure) : null;
+                        const destStation = findStation ? findStation(destination) : null;
+                        if (depStation && destStation) {
+                            const distance = calculateDistance ? calculateDistance(depStation, destStation) : null;
+                            const stats = {
+                                distance: distance,
+                                popularity: Math.floor(Math.random() * 50000) + 10000,
+                                punctuality: { overall: 75.2 }
+                            };
+                            displayRouteStatistics(stats, trains.length);
+                        }
+                    }
+                } catch (e) {
+                    console.warn('Errore nel calcolo statistiche:', e);
+                }
+                
+                trainsList.innerHTML = '';
+
+                // Salva i treni globalmente per il badge "più veloce"
+                window.allTrains = trains;
+
+                trains.forEach(train => {
+                    const trainCard = createTrainCard(train);
+                    // Aggiungi data attributes per il carrello
+                    trainCard.setAttribute('data-train-number', train.trainNumber);
+                    trainCard.setAttribute('data-train-data', JSON.stringify(train));
+                    trainsList.appendChild(trainCard);
+                });
+                
+                // Aggiungi filtri
+                setupFilters();
+
+                resultsContent.style.display = 'block';
+
+            } catch (error) {
+                console.error('Errore nella ricerca:', error);
+                loadingSpinner.style.display = 'none';
+                errorMessage.style.display = 'flex';
+                errorText.textContent = error.message || 'Si è verificato un errore durante la ricerca. Riprova più tardi.';
+                
+                // Mostra dettagli dell'errore in console per debug
+                console.error('Dettagli errore:', {
+                    departure,
+                    destination,
+                    date,
+                    preferredTime,
+                    error: error.stack || error
+                });
+            }
+        }
+
+        function createTrainCard(train) {
+            const card = document.createElement('div');
+            card.className = 'train-result-card';
+            card.setAttribute('data-type', train.type);
+            card.setAttribute('data-price', train.price);
+            // Calcola durata per data attribute (sarà aggiornato dopo)
+            const durationForSort = train.duration || (train.departureTime && train.arrivalTime ? calculateDurationMinutes(train.departureTime, train.arrivalTime) : 0);
+            card.setAttribute('data-duration', durationForSort);
+            
+            // Gestisci orari per treni con cambi o diretti
+            let departureTime, arrivalTime, duration, durationMinutes;
+            try {
+                if (train.segments && train.segments.length > 0) {
+                    // Treno con cambi: usa il primo segmento per partenza e l'ultimo per arrivo
+                    const firstSegment = train.segments[0];
+                    const lastSegment = train.segments[train.segments.length - 1];
+                    const depTime = firstSegment.departureTime instanceof Date ? firstSegment.departureTime.toISOString() : firstSegment.departureTime;
+                    const arrTime = lastSegment.arrivalTime instanceof Date ? lastSegment.arrivalTime.toISOString() : lastSegment.arrivalTime;
+                    departureTime = formatTime(depTime);
+                    arrivalTime = formatTime(arrTime);
+                    duration = formatDuration(train.duration);
+                    durationMinutes = train.duration;
+                    // Aggiorna data attribute con durata corretta
+                    card.setAttribute('data-duration', train.duration);
+                } else {
+                    const depTime = train.departureTime instanceof Date ? train.departureTime.toISOString() : train.departureTime;
+                    const arrTime = train.arrivalTime instanceof Date ? train.arrivalTime.toISOString() : train.arrivalTime;
+                    departureTime = formatTime(depTime);
+                    arrivalTime = formatTime(arrTime);
+                    duration = train.duration ? formatDuration(train.duration) : calculateDuration(depTime, arrTime);
+                    durationMinutes = train.duration || calculateDurationMinutes(depTime, arrTime);
+                    // Aggiorna data attribute con durata corretta
+                    card.setAttribute('data-duration', durationMinutes);
+                }
+            } catch (e) {
+                console.error('Errore nel calcolo orari:', e, train);
+                departureTime = '--:--';
+                arrivalTime = '--:--';
+                duration = '--';
+                durationMinutes = 0;
+            }
+            
+            // Indicatore di puntualità
+            const punctualityBadge = train.isOnTime 
+                ? '<span class="punctuality-badge on-time"><i class="fas fa-check-circle"></i> In orario</span>'
+                : `<span class="punctuality-badge delayed"><i class="fas fa-exclamation-triangle"></i> +${train.delay || 0} min</span>`;
+            
+            // Servizi disponibili
+            const amenities = train.amenities ? train.amenities.map(amenity => 
+                `<span class="amenity-tag"><i class="fas fa-check"></i> ${amenity}</span>`
+            ).join('') : '';
+            
+            // Mostra fermate intermedie o segmenti per treni con cambi
+            let intermediateStopsHTML = '';
+            if (train.segments && train.segments.length > 0) {
+                // Treno con cambi
+                intermediateStopsHTML = `
+                    <div class="changes-section">
+                        <div class="changes-header">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>${train.changes} cambio${train.changes !== 1 ? 'i' : ''} necessario${train.changes !== 1 ? 'i' : ''}</span>
+                        </div>
+                        <div class="segments-list">
+                            ${train.segments.map((segment, idx) => `
+                                <div class="segment-item">
+                                    <div class="segment-route">
+                                        <span class="segment-station">${segment.departureStation}</span>
+                                        <i class="fas fa-arrow-right"></i>
+                                        <span class="segment-station">${segment.arrivalStation}</span>
+                                    </div>
+                                    <div class="segment-time">
+                                        ${formatTime(segment.departureTime instanceof Date ? segment.departureTime.toISOString() : segment.departureTime)} → ${formatTime(segment.arrivalTime instanceof Date ? segment.arrivalTime.toISOString() : segment.arrivalTime)}
+                                    </div>
+                                    ${segment.changeStation ? `
+                                        <div class="change-info">
+                                            <i class="fas fa-clock"></i>
+                                            Cambio a ${segment.changeStation} (attesa: ${segment.waitTime} min)
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            } else if (train.intermediateStations && train.intermediateStations.length > 0) {
+                // Treno diretto con fermate intermedie
+                intermediateStopsHTML = `
+                    <div class="intermediate-stops">
+                        <div class="stops-header">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Fermate intermedie (${train.intermediateStations.length})</span>
+                        </div>
+                        <div class="stops-list">
+                            ${train.intermediateStations.map(stop => 
+                                `<span class="stop-item">${stop.name}</span>`
+                            ).join(' → ')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            card.innerHTML = `
+                <div class="train-card-header">
+                    <div class="train-type ${train.type.toLowerCase().replace(/\s+/g, '-')}">
+                        <i class="fas fa-train"></i>
+                        <span>${train.type}</span>
+                    </div>
+                    <div class="train-header-right">
+                        <div class="train-number">${train.trainNumber}</div>
+                        ${punctualityBadge}
+                    </div>
+                </div>
+                <div class="train-card-body">
+                    <div class="time-section">
+                        <div class="time-block">
+                            <div class="time">${departureTime}</div>
+                            <div class="station">${train.departureStation}</div>
+                        </div>
+                        <div class="duration">
+                            <i class="fas fa-clock"></i>
+                            <span>${duration}</span>
+                            ${train.distance ? `<span class="distance">${train.distance} km</span>` : ''}
+                        </div>
+                        <div class="time-block">
+                            <div class="time">${arrivalTime}</div>
+                            <div class="station">${train.arrivalStation}</div>
+                        </div>
+                    </div>
+                    <div class="train-details-section">
+                        <div class="detail-item price-item">
+                            <i class="fas fa-coins"></i>
+                            <span class="price-value">€${train.price}</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-chair"></i>
+                            <span>${train.availableSeats} posti</span>
+                        </div>
+                        ${train.changes > 0 ? `
+                        <div class="detail-item">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>${train.changes} cambio${train.changes !== 1 ? 'i' : ''}</span>
+                        </div>
+                        ` : '<div class="detail-item"><i class="fas fa-route"></i> <span>Diretto</span></div>'}
+                        ${train.punctuality ? `
+                        <div class="detail-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>${train.punctuality}% puntuale</span>
+                        </div>
+                        ` : ''}
+                    </div>
+                    ${intermediateStopsHTML}
+                    ${amenities ? `
+                    <div class="amenities-section">
+                        <div class="amenities-label"><i class="fas fa-star"></i> Servizi disponibili:</div>
+                        <div class="amenities-list">${amenities}</div>
+                    </div>
+                    ` : ''}
+                </div>
+                <div class="train-card-footer">
+                    <button class="select-train-btn" onclick="selectTrain('${train.trainNumber}')">
+                        <i class="fas fa-shopping-cart"></i> Aggiungi al carrello
+                    </button>
+                    ${(() => {
+                        if (window.allTrains && window.allTrains.length > 0) {
+                            const fastestTrain = window.allTrains.reduce((fastest, t) => {
+                                const tDuration = t.duration || (t.departureTime && t.arrivalTime ? 
+                                    calculateDurationMinutes(t.departureTime, t.arrivalTime) : Infinity);
+                                const fastestDuration = fastest ? (fastest.duration || Infinity) : Infinity;
+                                return (!fastest || tDuration < fastestDuration) ? t : fastest;
+                            }, null);
+                            const trainDuration = train.duration || (train.departureTime && train.arrivalTime ? 
+                                calculateDurationMinutes(train.departureTime, train.arrivalTime) : Infinity);
+                            return fastestTrain && fastestTrain.trainNumber === train.trainNumber 
+                                ? '<span class="recommended-badge"><i class="fas fa-star"></i> Più veloce</span>' 
+                                : '';
+                        }
+                        return '';
+                    })()}
+                </div>
+            `;
+            
+            return card;
+        }
+        
+        function formatDuration(minutes) {
+            if (typeof minutes === 'number') {
+                const hours = Math.floor(minutes / 60);
+                const mins = minutes % 60;
+                return `${hours}h ${mins}m`;
+            }
+            return minutes;
+        }
+        
+        function calculateDurationMinutes(departure, arrival) {
+            if (!departure || !arrival) return 0;
+            const dep = new Date(departure);
+            const arr = new Date(arrival);
+            return Math.round((arr - dep) / (1000 * 60));
+        }
+
+        function formatTime(timeString) {
+            if (!timeString) return '--:--';
+            try {
+                // Gestisci sia stringhe che oggetti Date
+                const time = timeString instanceof Date ? timeString : new Date(timeString);
+                if (isNaN(time.getTime())) return '--:--';
+                return time.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
+            } catch (e) {
+                console.error('Errore formatTime:', e, timeString);
+                return '--:--';
+            }
+        }
+
+        function calculateDuration(departure, arrival) {
+            if (!departure || !arrival) return '--:--';
+            const dep = new Date(departure);
+            const arr = new Date(arrival);
+            const diff = arr - dep;
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            return `${hours}h ${minutes}m`;
+        }
+
+        // Carrello globale
+        let cart = [];
+        
+        function selectTrain(trainNumber) {
+            // Trova il treno selezionato
+            const trainCard = document.querySelector(`[data-train-number="${trainNumber}"]`);
+            if (!trainCard) return;
+            
+            const trainData = JSON.parse(trainCard.getAttribute('data-train-data'));
+            
+            // Controlla se il treno è già nel carrello
+            const existingIndex = cart.findIndex(item => item.trainNumber === trainNumber);
+            if (existingIndex > -1) {
+                cart[existingIndex].quantity += 1;
+            } else {
+                cart.push({
+                    ...trainData,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            showCartNotification();
+        }
+        
+        function removeFromCart(trainNumber) {
+            cart = cart.filter(item => item.trainNumber !== trainNumber);
+            updateCart();
+        }
+        
+        function updateCartQuantity(trainNumber, quantity) {
+            const item = cart.find(item => item.trainNumber === trainNumber);
+            if (item) {
+                if (quantity <= 0) {
+                    removeFromCart(trainNumber);
+                } else {
+                    item.quantity = quantity;
+                    updateCart();
+                }
+            }
+        }
+        
+        function updateCart() {
+            const cartSection = document.getElementById('cartSection');
+            const cartItems = document.getElementById('cartItems');
+            const cartCount = document.getElementById('cartCount');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                cartSection.style.display = 'none';
+                return;
+            }
+            
+            cartSection.style.display = 'block';
+            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = total.toFixed(2);
+            
+            cartItems.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <div class="cart-item-header">
+                            <strong>${item.type} ${item.trainNumber}</strong>
+                            <button class="remove-item-btn" onclick="removeFromCart('${item.trainNumber}')">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="cart-item-details">
+                            <span>${item.departureStation} → ${item.arrivalStation}</span>
+                            <span>${formatTime(item.departureTime)} - ${formatTime(item.arrivalTime)}</span>
+                        </div>
+                    </div>
+                    <div class="cart-item-controls">
+                        <div class="quantity-controls">
+                            <button onclick="updateCartQuantity('${item.trainNumber}', ${item.quantity - 1})">-</button>
+                            <span>${item.quantity}</span>
+                            <button onclick="updateCartQuantity('${item.trainNumber}', ${item.quantity + 1})">+</button>
+                        </div>
+                        <div class="cart-item-price">€${(item.price * item.quantity).toFixed(2)}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function showCartNotification() {
+            // Crea una notifica temporanea
+            const notification = document.createElement('div');
+            notification.className = 'cart-notification';
+            notification.innerHTML = '<i class="fas fa-check"></i> Aggiunto al carrello!';
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => notification.remove(), 300);
+            }, 2000);
+        }
+        
+        function exportCart() {
+            if (cart.length === 0) {
+                alert('Il carrello è vuoto!');
+                return;
+            }
+            
+            const data = {
+                date: new Date().toISOString(),
+                items: cart,
+                total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `biglietti-trenitalia-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+        
+        function printCart() {
+            if (cart.length === 0) {
+                alert('Il carrello è vuoto!');
+                return;
+            }
+            
+            const printWindow = window.open('', '_blank');
+            const printContent = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Biglietti Trenitalia</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; padding: 20px; }
+                        .ticket { border: 2px solid #003366; padding: 15px; margin: 15px 0; border-radius: 8px; }
+                        .ticket-header { background: #003366; color: white; padding: 10px; margin: -15px -15px 15px -15px; border-radius: 6px 6px 0 0; }
+                        .ticket-info { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+                        .total { font-size: 1.5em; font-weight: bold; text-align: right; margin-top: 20px; }
+                    </style>
+                </head>
+                <body>
+                    <h1>Biglietti Trenitalia</h1>
+                    <p>Data emissione: ${new Date().toLocaleString('it-IT')}</p>
+                    ${cart.map((item, index) => `
+                        <div class="ticket">
+                            <div class="ticket-header">
+                                <strong>Biglietto ${index + 1} - ${item.type} ${item.trainNumber}</strong>
+                            </div>
+                            <div class="ticket-info">
+                                <div><strong>Partenza:</strong> ${item.departureStation}</div>
+                                <div><strong>Arrivo:</strong> ${item.arrivalStation}</div>
+                                <div><strong>Data:</strong> ${new Date(item.departureTime).toLocaleDateString('it-IT')}</div>
+                                <div><strong>Orario:</strong> ${formatTime(item.departureTime)} - ${formatTime(item.arrivalTime)}</div>
+                                <div><strong>Quantità:</strong> ${item.quantity}</div>
+                                <div><strong>Prezzo unitario:</strong> €${item.price.toFixed(2)}</div>
+                            </div>
+                            <div style="text-align: right; margin-top: 10px;">
+                                <strong>Totale: €${(item.price * item.quantity).toFixed(2)}</strong>
+                            </div>
+                        </div>
+                    `).join('')}
+                    <div class="total">
+                        Totale complessivo: €${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}
+                    </div>
+                </body>
+                </html>
+            `;
+            
+            printWindow.document.write(printContent);
+            printWindow.document.close();
+            printWindow.print();
+        }
+        
+        // Event listeners per carrello - da inizializzare quando il DOM è pronto
+        function setupCartEventListeners() {
+            const clearCartBtn = document.getElementById('clearCartBtn');
+            const exportBtn = document.getElementById('exportBtn');
+            const printBtn = document.getElementById('printBtn');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            
+            if (clearCartBtn) {
+                clearCartBtn.addEventListener('click', () => {
+                    if (confirm('Vuoi svuotare il carrello?')) {
+                        cart = [];
+                        updateCart();
+                    }
+                });
+            }
+            
+            if (exportBtn) {
+                exportBtn.addEventListener('click', exportCart);
+            }
+            
+            if (printBtn) {
+                printBtn.addEventListener('click', printCart);
+            }
+            
+            if (checkoutBtn) {
+                checkoutBtn.addEventListener('click', () => {
+                    if (cart.length === 0) {
+                        alert('Il carrello è vuoto!');
+                        return;
+                    }
+                    alert('Funzionalità di pagamento in sviluppo. I tuoi biglietti sono stati salvati nel carrello.');
+                });
+            }
+        }
+        
+        function displayRouteStatistics(stats, numTrains) {
+            const statsSection = document.getElementById('routeStatistics');
+            if (!statsSection || !stats) return;
+            
+            document.getElementById('statDistance').textContent = stats.distance ? `${stats.distance} km` : '--';
+            document.getElementById('statPopularity').textContent = stats.popularity ? stats.popularity.toLocaleString('it-IT') : '--';
+            document.getElementById('statPunctuality').textContent = stats.punctuality ? `${stats.punctuality.overall}%` : '--';
+            document.getElementById('statTrains').textContent = numTrains || '--';
+            
+            statsSection.style.display = 'block';
+        }
+        
+        function setupFilters() {
+            const filterType = document.getElementById('filterType');
+            const sortBy = document.getElementById('sortBy');
+            const trainsList = document.getElementById('trainsList');
+            const cards = Array.from(trainsList.children);
+            
+            function applyFilters() {
+                const selectedType = filterType.value;
+                const sortValue = sortBy.value;
+                
+                // Filtra
+                let filtered = cards;
+                if (selectedType !== 'all') {
+                    filtered = cards.filter(card => card.getAttribute('data-type') === selectedType);
+                }
+                
+                // Ordina
+                filtered.sort((a, b) => {
+                    if (sortValue === 'price') {
+                        return parseFloat(a.getAttribute('data-price')) - parseFloat(b.getAttribute('data-price'));
+                    } else if (sortValue === 'duration') {
+                        return parseFloat(a.getAttribute('data-duration')) - parseFloat(b.getAttribute('data-duration'));
+                    } else if (sortValue === 'arrival') {
+                        // Ordina per orario di arrivo (usa il testo dell'orario)
+                        const timeA = a.querySelector('.time-block:last-child .time').textContent;
+                        const timeB = b.querySelector('.time-block:last-child .time').textContent;
+                        return timeA.localeCompare(timeB);
+                    } else {
+                        // Ordina per orario di partenza (default)
+                        const timeA = a.querySelector('.time-block:first-child .time').textContent;
+                        const timeB = b.querySelector('.time-block:first-child .time').textContent;
+                        return timeA.localeCompare(timeB);
+                    }
+                });
+                
+                // Nascondi tutte le card
+                cards.forEach(card => card.style.display = 'none');
+                
+                // Mostra solo quelle filtrate
+                filtered.forEach(card => card.style.display = 'block');
+                
+                // Aggiorna il conteggio
+                document.getElementById('resultsCount').textContent = 
+                    `Trovati ${filtered.length} treno${filtered.length !== 1 ? 'i' : ''} disponibili`;
+            }
+            
+            filterType.addEventListener('change', applyFilters);
+            sortBy.addEventListener('change', applyFilters);
+        }
+    </script>
+</body>
+
+</html>
+
